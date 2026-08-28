@@ -1,0 +1,149 @@
+Line 248: onClick={() => setShowingBack(!showingBack)} | O:0 C:0 | B:0->0
+Line 249: className="flex items-center gap-2 bg-white border border-gray-300 text-gray-700 font-bold px-3 sm:px-4 py-2 rounded-[9px] shadow-sm hover:bg-gray-50 transition-colors text-sm" | O:0 C:0 | B:0->0
+Line 250: > | O:0 C:0 | B:0->0
+Line 251: <Repeat className="w-4 h-4" /> | O:0 C:0 | B:0->0
+Line 252: {showingBack ? 'See Front' : 'See Back'} | O:0 C:0 | B:0->0
+Line 253: </button> | O:0 C:0 | B:0->0
+Line 254: <button | O:0 C:0 | B:0->0
+Line 255: onClick={downloadID} | O:0 C:0 | B:0->0
+Line 256: disabled={isDownloading} | O:0 C:0 | B:0->0
+Line 257: className="flex items-center gap-2 bg-purple-600 hover:bg-purple-700 text-white font-bold px-3 sm:px-4 py-2 rounded-[9px] shadow-sm transition-colors disabled:opacity-50 text-sm" | O:0 C:0 | B:0->0
+Line 258: > | O:0 C:0 | B:0->0
+Line 259: <Download className="w-4 h-4" /> | O:0 C:0 | B:0->0
+Line 260: {isDownloading ? 'Downloading...' : 'Download HD'} | O:0 C:0 | B:0->0
+Line 261: </button> | O:0 C:0 | B:0->0
+Line 262: </div> | O:0 C:1 | B:0->-1
+Line 263:  | O:0 C:0 | B:-1->-1
+Line 264: {/* Card Container for Scaling */} | O:0 C:0 | B:-1->-1
+Line 265: <div ref={cardContainerRef} className="w-full flex justify-center items-start overflow-visible" style={{ height: `${540 * cardScale}px` }}> | O:1 C:0 | B:-1->0
+Line 266:  | O:0 C:0 | B:0->0
+Line 267: <div | O:1 C:0 | B:0->1
+Line 268: className="relative transition-transform duration-300" | O:0 C:0 | B:1->1
+Line 269: style={{ | O:0 C:0 | B:1->1
+Line 270: width: '856px', | O:0 C:0 | B:1->1
+Line 271: minWidth: '856px', | O:0 C:0 | B:1->1
+Line 272: height: '540px', | O:0 C:0 | B:1->1
+Line 273: transform: `scale(${cardScale})`, | O:0 C:0 | B:1->1
+Line 274: transformOrigin: 'top center' | O:0 C:0 | B:1->1
+Line 275: }} | O:0 C:0 | B:1->1
+Line 276: > | O:0 C:0 | B:1->1
+Line 277: {/* FRONT OF CARD (GHIC Style) */} | O:0 C:0 | B:1->1
+Line 278: {!showingBack && ( | O:0 C:0 | B:1->1
+Line 279: <div id="id-card-front" className="absolute inset-0 bg-[#f4f6f9] rounded-[24px] overflow-hidden shadow-2xl flex flex-col font-sans border-2 border-gray-300"> | O:1 C:0 | B:1->2
+Line 280: {/* Background Watermark */} | O:0 C:0 | B:2->2
+Line 281: <div className="absolute right-0 top-1/2 -translate-y-1/2 w-[400px] h-[400px] opacity-[0.03] pointer-events-none"> | O:1 C:0 | B:2->3
+Line 282: <img src="/defineddomain.png" className="w-full h-full object-contain grayscale" /> | O:0 C:0 | B:3->3
+Line 283: </div> | O:0 C:1 | B:3->2
+Line 284:  | O:0 C:0 | B:2->2
+Line 285: {/* HEADER */} | O:0 C:0 | B:2->2
+Line 286: <div className="relative w-full h-[140px] bg-[#0b1f38] flex items-center px-8 shrink-0"> | O:1 C:0 | B:2->3
+Line 287: {/* Lanyard Hole */} | O:0 C:0 | B:3->3
+Line 288: <div className="absolute top-4 left-1/2 -translate-x-1/2 w-20 h-4 bg-[#f4f6f9] rounded-full border border-gray-300 shadow-inner z-20"></div> | O:1 C:1 | B:3->3
+Line 289:  | O:0 C:0 | B:3->3
+Line 290: {/* Gold separator overlay */} | O:0 C:0 | B:3->3
+Line 291: <div className="absolute -bottom-0.5 left-0 w-full overflow-hidden leading-none z-0"> | O:1 C:0 | B:3->4
+Line 292: <svg className="w-full h-8 block" viewBox="0 0 856 32" fill="none" preserveAspectRatio="none"> | O:0 C:0 | B:4->4
+Line 293: <path d="M0,0 L856,24 L856,32 L0,32 Z" fill="#f4f6f9" /> | O:0 C:0 | B:4->4
+Line 294: <path d="M0,0 L856,16 L856,24 L0,8 Z" fill="#c5a059" /> | O:0 C:0 | B:4->4
+Line 295: </svg> | O:0 C:0 | B:4->4
+Line 296: </div> | O:0 C:1 | B:4->3
+Line 297:  | O:0 C:0 | B:3->3
+Line 298: <div className="flex items-center gap-5 z-10 w-full relative -mt-3"> | O:1 C:0 | B:3->4
+Line 299: <div className="w-20 h-20 bg-white rounded-full p-2 flex items-center justify-center shadow-md"> | O:1 C:0 | B:4->5
+Line 300: <img src="/defineddomain.png" className="w-full h-full object-contain" /> | O:0 C:0 | B:5->5
+Line 301: </div> | O:0 C:1 | B:5->4
+Line 302: <div className="flex flex-col"> | O:1 C:0 | B:4->5
+Line 303: <h2 className="text-[32px] font-black text-white uppercase tracking-widest leading-none">Defined Domains</h2> | O:0 C:0 | B:5->5
+Line 304: <p className="text-[13px] font-bold text-[#c5a059] uppercase tracking-[0.15em] mt-2">Inclusive Educational Institute</p> | O:0 C:0 | B:5->5
+Line 305: </div> | O:0 C:1 | B:5->4
+Line 306: <div className="ml-auto flex items-center gap-3 border border-[#c5a059]/40 bg-[#c5a059]/10 px-4 py-2 rounded-xl"> | O:1 C:0 | B:4->5
+Line 307: <Shield className="w-8 h-8 text-[#c5a059]" /> | O:0 C:0 | B:5->5
+Line 308: <div className="flex flex-col text-left"> | O:1 C:0 | B:5->6
+Line 309: <span className="text-[11px] font-black text-white leading-tight uppercase tracking-wider">Verified</span> | O:0 C:0 | B:6->6
+Line 310: <span className="text-[11px] font-black text-white leading-tight uppercase tracking-wider">& Secured</span> | O:0 C:0 | B:6->6
+Line 311: </div> | O:0 C:1 | B:6->5
+Line 312: </div> | O:0 C:1 | B:5->4
+Line 313: </div> | O:0 C:1 | B:4->3
+Line 314:  | O:0 C:0 | B:3->3
+Line 315: {/* BODY */} | O:0 C:0 | B:3->3
+Line 316: <div className="flex flex-1 p-8 pt-7 relative z-10"> | O:1 C:0 | B:3->4
+Line 317: {/* LEFT COLUMN */} | O:0 C:0 | B:4->4
+Line 318: <div className="w-[230px] flex flex-col shrink-0"> | O:1 C:0 | B:4->5
+Line 319: <div className="w-full aspect-[3/4] bg-gray-200 rounded-xl overflow-hidden border-4 border-white shadow-[0_4px_15px_rgba(0,0,0,0.15)] relative"> | O:1 C:0 | B:5->6
+Line 320: {newlyAddedStudent.image ? <img src={newlyAddedStudent.image} className="w-full h-full object-cover"/> : <div className="w-full h-full flex items-center justify-center text-gray-400 text-xs font-bold">NO PHOTO</div>} | O:1 C:1 | B:6->6
+Line 321: </div> | O:0 C:1 | B:6->5
+Line 322: <div className="bg-[#0b1f38] text-white text-center py-3 rounded-b-xl shadow-lg -mt-3 z-10 relative"> | O:1 C:0 | B:5->6
+Line 323: <p className="text-[10px] font-bold uppercase tracking-widest text-[#c5a059] mb-1">Student ID</p> | O:0 C:0 | B:6->6
+Line 324: <p className="text-[17px] font-mono font-bold tracking-wider">{newlyAddedStudent.id.toUpperCase()}</p> | O:0 C:0 | B:6->6
+Line 325: </div> | O:0 C:1 | B:6->5
+Line 326: <div className="mt-5 flex justify-center bg-white p-2.5 rounded-xl border border-gray-300 shadow-sm"> | O:1 C:0 | B:5->6
+Line 327: <Barcode value={newlyAddedStudent.id.toUpperCase()} width={1.9} height={40} displayValue={false} margin={0} background="transparent" /> | O:0 C:0 | B:6->6
+Line 328: </div> | O:0 C:1 | B:6->5
+Line 329: </div> | O:0 C:1 | B:5->4
+Line 330:  | O:0 C:0 | B:4->4
+Line 331: {/* RIGHT COLUMN */} | O:0 C:0 | B:4->4
+Line 332: <div className="flex-1 pl-10 flex flex-col"> | O:1 C:0 | B:4->5
+Line 333: <h3 className="text-[42px] font-black text-[#0b1f38] uppercase leading-none tracking-tighter">{newlyAddedStudent.name} {newlyAddedStudent.surname}</h3> | O:0 C:0 | B:5->5
+Line 334: <p className="text-[20px] font-bold text-[#c5a059] uppercase tracking-[0.15em] mt-3">{newlyAddedStudent.grade}</p> | O:0 C:0 | B:5->5
+Line 335:  | O:0 C:0 | B:5->5
+Line 336: <div className="w-full h-0.5 bg-gray-300 my-5"></div> | O:1 C:1 | B:5->5
+Line 337:  | O:0 C:0 | B:5->5
+Line 338: <div className="flex flex-col gap-5 flex-1"> | O:1 C:0 | B:5->6
+Line 339: <div className="flex items-center gap-4"> | O:1 C:0 | B:6->7
+Line 340: <div className="w-10 h-10 rounded-full bg-[#0b1f38] flex items-center justify-center shrink-0 shadow-md"> | O:1 C:0 | B:7->8
+Line 341: <MapPin className="w-5 h-5 text-white" /> | O:0 C:0 | B:8->8
+Line 342: </div> | O:0 C:1 | B:8->7
+Line 343: <div> | O:1 C:0 | B:7->8
+Line 344: <p className="text-[11px] font-bold text-[#0b1f38] uppercase tracking-[0.15em] mb-0.5">Home Address</p> | O:0 C:0 | B:8->8
+Line 345: <p className="text-[15px] font-bold text-gray-700 leading-tight">{newlyAddedStudent.address}</p> | O:0 C:0 | B:8->8
+Line 346: </div> | O:0 C:1 | B:8->7
+Line 347: </div> | O:0 C:1 | B:7->6
+Line 348: <div className="flex items-center gap-4"> | O:1 C:0 | B:6->7
+Line 349: <div className="w-10 h-10 rounded-full bg-[#0b1f38] flex items-center justify-center shrink-0 shadow-md"> | O:1 C:0 | B:7->8
+Line 350: <GraduationCap className="w-5 h-5 text-white" /> | O:0 C:0 | B:8->8
+Line 351: </div> | O:0 C:1 | B:8->7
+Line 352: <div> | O:1 C:0 | B:7->8
+Line 353: <p className="text-[11px] font-bold text-[#0b1f38] uppercase tracking-[0.15em] mb-0.5">Access Level & Division</p> | O:0 C:0 | B:8->8
+Line 354: <p className="text-[15px] font-bold text-gray-700 leading-tight">Special Needs Education & Inclusive Learning</p> | O:0 C:0 | B:8->8
+Line 355: </div> | O:0 C:1 | B:8->7
+Line 356: </div> | O:0 C:1 | B:7->6
+Line 357: </div> | O:0 C:1 | B:6->5
+Line 358:  | O:0 C:0 | B:5->5
+Line 359: {/* Signature & QR Row */} | O:0 C:0 | B:5->5
+Line 360: <div className="flex justify-between items-end mt-2"> | O:1 C:0 | B:5->6
+Line 361: <div className="flex flex-col items-center px-2"> | O:1 C:0 | B:6->7
+Line 362: <p className="text-5xl font-['Brush_Script_MT',_cursive,_serif] text-[#0b1f38] -mb-2 z-10 italic">Def. Dom.</p> | O:0 C:0 | B:7->7
+Line 363: <div className="w-56 border-t-[1.5px] border-gray-400"></div> | O:1 C:1 | B:7->7
+Line 364: <span className="font-bold text-[10px] text-[#0b1f38] uppercase mt-1.5 tracking-widest">Authorized Signature</span> | O:0 C:0 | B:7->7
+Line 365: </div> | O:0 C:1 | B:7->6
+Line 366:  | O:0 C:0 | B:6->6
+Line 367: <div className="flex flex-col items-center"> | O:1 C:0 | B:6->7
+Line 368: <p className="text-[10px] font-bold text-[#0b1f38] uppercase tracking-widest mb-1">Issue Date</p> | O:0 C:0 | B:7->7
+Line 369: <p className="text-[14px] font-bold text-gray-700">28 MAY 2024</p> | O:0 C:0 | B:7->7
+Line 370: </div> | O:0 C:1 | B:7->6
+Line 371:  | O:0 C:0 | B:6->6
+Line 372: <div className="flex flex-col items-center"> | O:1 C:0 | B:6->7
+Line 373: <div className="bg-white p-2 border border-gray-300 rounded-xl shadow-sm mb-2 relative"> | O:1 C:0 | B:7->8
+Line 374: <QRCode value={`https://${window.location.host}/defined-domains/${newlyAddedStudent.slug}`} size={80} fgColor="#0b1f38" /> | O:0 C:0 | B:8->8
+Line 375: </div> | O:0 C:1 | B:8->7
+Line 376: <span className="text-[10px] font-bold uppercase tracking-[0.15em] bg-[#c5a059] text-white px-3 py-1.5 rounded-md shadow-sm w-full text-center">Scan to Verify</span> | O:0 C:0 | B:7->7
+Line 377: </div> | O:0 C:1 | B:7->6
+Line 378: </div> | O:0 C:1 | B:6->5
+Line 379: </div> | O:0 C:1 | B:5->4
+Line 380: </div> | O:0 C:1 | B:4->3
+Line 381:  | O:0 C:0 | B:3->3
+Line 382: {/* FOOTER */} | O:0 C:0 | B:3->3
+Line 383: <div className="w-full h-[36px] bg-[#0b1f38] shrink-0 flex items-center justify-center gap-10 z-20"> | O:1 C:0 | B:3->4
+Line 384: <span className="text-[11px] font-bold text-[#c5a059] uppercase tracking-[0.25em]">Education</span> | O:0 C:0 | B:4->4
+Line 385: <div className="w-1.5 h-1.5 rounded-full bg-[#c5a059]"></div> | O:1 C:1 | B:4->4
+Line 386: <span className="text-[11px] font-bold text-[#c5a059] uppercase tracking-[0.25em]">Inclusion</span> | O:0 C:0 | B:4->4
+Line 387: <div className="w-1.5 h-1.5 rounded-full bg-[#c5a059]"></div> | O:1 C:1 | B:4->4
+Line 388: <span className="text-[11px] font-bold text-[#c5a059] uppercase tracking-[0.25em]">Empowerment</span> | O:0 C:0 | B:4->4
+Line 389: <div className="w-1.5 h-1.5 rounded-full bg-[#c5a059]"></div> | O:1 C:1 | B:4->4
+Line 390: <span className="text-[11px] font-bold text-[#c5a059] uppercase tracking-[0.25em]">Trust</span> | O:0 C:0 | B:4->4
+Line 391: </div> | O:0 C:1 | B:4->3
+Line 392: </div> | O:0 C:1 | B:3->2
+Line 393: </div> | O:0 C:1 | B:2->1
+Line 394: )} | O:0 C:0 | B:1->1
+Line 395: </div> | O:0 C:1 | B:1->0
+ZERO BALANCE REACHED AT 395
