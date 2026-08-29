@@ -274,210 +274,236 @@ export function DefinedDomains() {
                     transformOrigin: 'top center'
                   }}
                 >
-                  {/* FRONT OF CARD (GHIC Style) */}
+                  {/* FRONT OF CARD (White Theme with Green, Grey, and Purple Accents) */}
                   {!showingBack && (
-                    <div id="id-card-front" className="absolute inset-0 bg-[#f4f6f9] rounded-[24px] overflow-hidden shadow-2xl flex flex-col font-sans border-2 border-gray-300">
-                       {/* Background Watermark */}
-                       <div className="absolute right-0 top-1/2 -translate-y-1/2 w-[400px] h-[400px] opacity-[0.03] pointer-events-none">
-                          <img src="/defineddomain.png" className="w-full h-full object-contain grayscale" />
+                    <div id="id-card-front" className="absolute inset-0 bg-white rounded-[22px] overflow-hidden shadow-2xl flex flex-col font-sans border-2 border-slate-200 select-none">
+                       {/* Subtle Background Watermark */}
+                       <div className="absolute right-[-20px] top-1/2 -translate-y-1/2 w-[380px] h-[380px] opacity-[0.035] pointer-events-none">
+                          <img src="/defineddomain.png" className="w-full h-full object-contain grayscale" alt="" />
                        </div>
 
-                       {/* HEADER */}
-                       <div className="relative w-full h-[140px] bg-[#0b1f38] flex items-center px-8 shrink-0">
+                       {/* HEADER (White base with purple/green accents) */}
+                       <div className="relative w-full h-[92px] bg-white flex items-center justify-between px-7 shrink-0 border-b-[3.5px] border-purple-600">
                           {/* Lanyard Hole */}
-                          <div className="absolute top-4 left-1/2 -translate-x-1/2 w-20 h-4 bg-[#f4f6f9] rounded-full border border-gray-300 shadow-inner z-20"></div>
+                          <div className="absolute top-2 left-1/2 -translate-x-1/2 w-16 h-2.5 bg-slate-100 rounded-full border border-slate-300 shadow-inner z-20"></div>
 
-                          {/* Gold separator overlay */}
-                          <div className="absolute -bottom-0.5 left-0 w-full overflow-hidden leading-none z-0">
-                             <svg className="w-full h-8 block" viewBox="0 0 856 32" fill="none" preserveAspectRatio="none">
-                                <path d="M0,0 L856,24 L856,32 L0,32 Z" fill="#f4f6f9" />
-                                <path d="M0,0 L856,16 L856,24 L0,8 Z" fill="#c5a059" />
-                             </svg>
-                          </div>
-
-                          <div className="flex items-center gap-5 z-10 w-full relative -mt-3">
-                             <div className="w-20 h-20 bg-white rounded-full p-2 flex items-center justify-center shadow-md">
-                                 <img src="/defineddomain.png" className="w-full h-full object-contain" />
+                          {/* Brand Info */}
+                          <div className="flex items-center gap-4 z-10">
+                             <div className="w-14 h-14 bg-white rounded-xl p-1 flex items-center justify-center shadow-sm border border-slate-200">
+                                <img src="/defineddomain.png" className="w-full h-full object-contain" alt="Logo" />
                              </div>
                              <div className="flex flex-col">
-                                <h2 className="text-[32px] font-black text-white uppercase tracking-widest leading-none">Defined Domains</h2>
-                                <p className="text-[13px] font-bold text-[#c5a059] uppercase tracking-[0.15em] mt-2">Inclusive Educational Institute</p>
+                                <h2 className="text-[26px] font-black text-slate-900 uppercase tracking-wider leading-none">Defined Domains</h2>
+                                <p className="text-[11px] font-bold text-purple-700 uppercase tracking-[0.2em] mt-1.5">Inclusive Educational Institute</p>
                              </div>
-                             <div className="ml-auto flex items-center gap-3 border border-[#c5a059]/40 bg-[#c5a059]/10 px-4 py-2 rounded-xl">
-                                <Shield className="w-8 h-8 text-[#c5a059]" />
-                                <div className="flex flex-col text-left">
-                                   <span className="text-[11px] font-black text-white leading-tight uppercase tracking-wider">Verified</span>
-                                   <span className="text-[11px] font-black text-white leading-tight uppercase tracking-wider">& Secured</span>
-                                </div>
+                          </div>
+
+                          {/* Security Badge */}
+                          <div className="flex items-center gap-2.5 bg-emerald-50 border border-emerald-300 text-emerald-800 px-3.5 py-1.5 rounded-xl shadow-xs z-10">
+                             <Shield className="w-5 h-5 text-emerald-600" />
+                             <div className="flex flex-col text-left">
+                                <span className="text-[10px] font-black leading-tight uppercase tracking-wider">Official ID</span>
+                                <span className="text-[9px] font-bold text-emerald-600 leading-tight uppercase tracking-wider">Verified</span>
                              </div>
-                           </div>
-                        </div>
+                          </div>
+                       </div>
 
                        {/* BODY */}
-                       <div className="flex flex-1 p-8 pt-7 relative z-10">
-                           {/* LEFT COLUMN */}
-                           <div className="w-[230px] flex flex-col shrink-0">
-                              <div className="w-full aspect-[3/4] bg-gray-200 rounded-xl overflow-hidden border-4 border-white shadow-[0_4px_15px_rgba(0,0,0,0.15)] relative">
-                                 {newlyAddedStudent.image ? <img src={newlyAddedStudent.image} className="w-full h-full object-cover"/> : <div className="w-full h-full flex items-center justify-center text-gray-400 text-xs font-bold">NO PHOTO</div>}
-                              </div>
-                              <div className="bg-[#0b1f38] text-white text-center py-3 rounded-b-xl shadow-lg -mt-3 z-10 relative">
-                                 <p className="text-[10px] font-bold uppercase tracking-widest text-[#c5a059] mb-1">Student ID</p>
-                                 <p className="text-[17px] font-mono font-bold tracking-wider">{newlyAddedStudent.id.toUpperCase()}</p>
-                              </div>
-                              <div className="mt-5 flex justify-center bg-white p-2.5 rounded-xl border border-gray-300 shadow-sm">
-                                 <Barcode value={newlyAddedStudent.id.toUpperCase()} width={1.9} height={40} displayValue={false} margin={0} background="transparent" />
-                              </div>
-                           </div>
+                       <div className="flex flex-1 p-6 pt-5 gap-6 relative z-10">
+                          {/* LEFT COLUMN (Photo, Student ID badge, Barcode) */}
+                          <div className="w-[210px] flex flex-col shrink-0 items-center">
+                             <div className="w-[195px] h-[225px] bg-slate-100 rounded-2xl overflow-hidden border-2 border-purple-500 shadow-md relative">
+                                {newlyAddedStudent.image ? (
+                                   <img src={newlyAddedStudent.image} className="w-full h-full object-cover" alt="Student" />
+                                ) : (
+                                   <div className="w-full h-full flex flex-col items-center justify-center text-slate-400 gap-2">
+                                      <User className="w-12 h-12 text-slate-300" />
+                                      <span className="text-xs font-bold uppercase tracking-wider">Photo</span>
+                                   </div>
+                                )}
+                             </div>
 
-                           {/* RIGHT COLUMN */}
-                           <div className="flex-1 pl-10 flex flex-col">
-                              <h3 className="text-[42px] font-black text-[#0b1f38] uppercase leading-none tracking-tighter">{newlyAddedStudent.name} {newlyAddedStudent.surname}</h3>
-                              <p className="text-[20px] font-bold text-[#c5a059] uppercase tracking-[0.15em] mt-3">{newlyAddedStudent.grade}</p>
-                              
-                              <div className="w-full h-0.5 bg-gray-300 my-5"></div>
+                             {/* Student ID Pill */}
+                             <div className="w-[195px] bg-slate-900 text-white text-center py-2 px-2 rounded-xl shadow-sm mt-2.5 border border-slate-700">
+                                <p className="text-[9px] font-bold uppercase tracking-widest text-emerald-400">Student ID</p>
+                                <p className="text-[15px] font-mono font-black tracking-wider text-white mt-0.5">{newlyAddedStudent.id.toUpperCase()}</p>
+                             </div>
 
-                              <div className="flex flex-col gap-5 flex-1">
-                                 <div className="flex items-center gap-4">
-                                    <div className="w-10 h-10 rounded-full bg-[#0b1f38] flex items-center justify-center shrink-0 shadow-md">
-                                       <MapPin className="w-5 h-5 text-white" />
-                                    </div>
-                                    <div>
-                                       <p className="text-[11px] font-bold text-[#0b1f38] uppercase tracking-[0.15em] mb-0.5">Home Address</p>
-                                       <p className="text-[15px] font-bold text-gray-700 leading-tight">{newlyAddedStudent.address}</p>
-                                    </div>
-                                 </div>
-                                 <div className="flex items-center gap-4">
-                                    <div className="w-10 h-10 rounded-full bg-[#0b1f38] flex items-center justify-center shrink-0 shadow-md">
-                                       <GraduationCap className="w-5 h-5 text-white" />
-                                    </div>
-                                    <div>
-                                       <p className="text-[11px] font-bold text-[#0b1f38] uppercase tracking-[0.15em] mb-0.5">Access Level & Division</p>
-                                       <p className="text-[15px] font-bold text-gray-700 leading-tight">Special Needs Education & Inclusive Learning</p>
-                                    </div>
-                                 </div>
-                              </div>
+                             {/* Barcode */}
+                             <div className="w-[195px] mt-2.5 bg-white p-1.5 rounded-xl border border-slate-200 flex flex-col items-center justify-center shadow-xs">
+                                <Barcode value={newlyAddedStudent.id.toUpperCase()} width={1.5} height={28} displayValue={false} margin={0} background="transparent" />
+                                <span className="text-[9px] font-mono font-bold text-slate-500 tracking-widest mt-0.5">{newlyAddedStudent.id.toUpperCase()}</span>
+                             </div>
+                          </div>
 
-                              {/* Signature & QR Row */}
-                              <div className="flex justify-between items-end mt-2">
-                                 <div className="flex flex-col items-center px-2">
-                                    <p className="text-5xl font-['Brush_Script_MT',_cursive,_serif] text-[#0b1f38] -mb-2 z-10 italic">Def. Dom.</p>
-                                    <div className="w-56 border-t-[1.5px] border-gray-400"></div>
-                                    <span className="font-bold text-[10px] text-[#0b1f38] uppercase mt-1.5 tracking-widest">Authorized Signature</span>
-                                 </div>
-                                 
-                                 <div className="flex flex-col items-center">
-                                    <p className="text-[10px] font-bold text-[#0b1f38] uppercase tracking-widest mb-1">Issue Date</p>
-                                    <p className="text-[14px] font-bold text-gray-700">28 MAY 2024</p>
-                                 </div>
+                          {/* RIGHT COLUMN (Name, Grade, Details, Prominent QR, Signature) */}
+                          <div className="flex-1 flex flex-col justify-between">
+                             {/* Name & Grade */}
+                             <div>
+                                <h3 className="text-[30px] font-black text-slate-900 uppercase leading-tight tracking-tight">
+                                   {newlyAddedStudent.name} {newlyAddedStudent.surname}
+                                </h3>
+                                <div className="flex items-center gap-2.5 mt-2">
+                                   <span className="bg-purple-100 text-purple-800 border border-purple-300 text-[11px] font-bold px-3 py-0.5 rounded-lg uppercase tracking-wider">
+                                      {newlyAddedStudent.grade}
+                                   </span>
+                                   <span className="bg-emerald-100 text-emerald-800 border border-emerald-300 text-[11px] font-bold px-3 py-0.5 rounded-lg uppercase tracking-wider">
+                                      Special Needs & Inclusion
+                                   </span>
+                                </div>
+                             </div>
 
-                                 <div className="flex flex-col items-center">
-                                    <div className="bg-white p-2 border border-gray-300 rounded-xl shadow-sm mb-2 relative">
-                                      <QRCode value={`https://${window.location.host}/defined-domains/${newlyAddedStudent.slug}`} size={80} fgColor="#0b1f38" />
-                                    </div>
-                                    <span className="text-[10px] font-bold uppercase tracking-[0.15em] bg-[#c5a059] text-white px-3 py-1.5 rounded-md shadow-sm w-full text-center">Scan to Verify</span>
-                                 </div>
-                              </div>
-                           </div>
+                             {/* Details Grid */}
+                             <div className="grid grid-cols-1 gap-2.5 bg-slate-50 p-3 rounded-xl border border-slate-200">
+                                <div className="flex items-start gap-2.5">
+                                   <MapPin className="w-4 h-4 text-purple-600 shrink-0 mt-0.5" />
+                                   <div>
+                                      <p className="text-[9px] font-bold text-slate-400 uppercase tracking-widest">Home Address</p>
+                                      <p className="text-[12px] font-bold text-slate-700 leading-snug line-clamp-1">{newlyAddedStudent.address}</p>
+                                   </div>
+                                </div>
+                                <div className="flex items-center justify-between pt-1.5 border-t border-slate-200 text-[11px]">
+                                   <div>
+                                      <span className="text-[9px] font-bold text-slate-400 uppercase tracking-widest mr-1.5">Issued:</span>
+                                      <span className="font-bold text-slate-700">28 MAY 2024</span>
+                                   </div>
+                                   <div>
+                                      <span className="text-[9px] font-bold text-slate-400 uppercase tracking-widest mr-1.5">Expires:</span>
+                                      <span className="font-bold text-red-600">28 MAY 2026</span>
+                                   </div>
+                                </div>
+                             </div>
+
+                             {/* Signature & Prominent QR Row */}
+                             <div className="flex justify-between items-center bg-white p-3 rounded-2xl border-2 border-purple-500 shadow-sm">
+                                {/* Signature */}
+                                <div className="flex flex-col items-center px-2">
+                                   <p className="text-3xl font-['Brush_Script_MT',_cursive,_serif] text-purple-900 -mb-1 italic">Def. Dom.</p>
+                                   <div className="w-36 border-t-[1.5px] border-slate-400"></div>
+                                   <span className="font-bold text-[8.5px] text-slate-500 uppercase mt-1 tracking-widest">Authorized Signature</span>
+                                </div>
+
+                                {/* PROMINENT QR CODE */}
+                                <div className="flex items-center gap-3.5 pl-3 border-l border-slate-200">
+                                   <div className="bg-white p-1.5 border-2 border-slate-800 rounded-xl shadow-xs">
+                                      <QRCode value={`https://${window.location.host}/defined-domains/${newlyAddedStudent.slug}`} size={78} fgColor="#0f172a" />
+                                   </div>
+                                   <div className="flex flex-col">
+                                      <span className="bg-emerald-600 text-white text-[9px] font-black uppercase tracking-wider px-2 py-0.5 rounded-md text-center shadow-xs">
+                                         Scan to Verify
+                                      </span>
+                                      <span className="text-[11px] font-extrabold text-slate-900 uppercase tracking-tight mt-1">Official ID</span>
+                                      <span className="text-[9px] font-medium text-slate-500">Live Database</span>
+                                   </div>
+                                </div>
+                             </div>
+                          </div>
                        </div>
 
                        {/* FOOTER */}
-                       <div className="w-full h-[36px] bg-[#0b1f38] shrink-0 flex items-center justify-center gap-10 z-20">
-                           <span className="text-[11px] font-bold text-[#c5a059] uppercase tracking-[0.25em]">Education</span>
-                           <div className="w-1.5 h-1.5 rounded-full bg-[#c5a059]"></div>
-                           <span className="text-[11px] font-bold text-[#c5a059] uppercase tracking-[0.25em]">Inclusion</span>
-                           <div className="w-1.5 h-1.5 rounded-full bg-[#c5a059]"></div>
-                           <span className="text-[11px] font-bold text-[#c5a059] uppercase tracking-[0.25em]">Empowerment</span>
-                           <div className="w-1.5 h-1.5 rounded-full bg-[#c5a059]"></div>
-                           <span className="text-[11px] font-bold text-[#c5a059] uppercase tracking-[0.25em]">Trust</span>
+                       <div className="w-full h-[38px] bg-slate-900 shrink-0 flex items-center justify-between px-7 border-t-2 border-emerald-500 z-20">
+                          <span className="text-[10px] font-extrabold text-slate-300 uppercase tracking-widest">Defined Domains Institute</span>
+                          <div className="flex items-center gap-4 text-[10px] font-bold text-emerald-400 uppercase tracking-[0.2em]">
+                             <span>Education</span>
+                             <span className="text-purple-400">•</span>
+                             <span>Inclusion</span>
+                             <span className="text-purple-400">•</span>
+                             <span>Empowerment</span>
+                             <span className="text-purple-400">•</span>
+                             <span>Trust</span>
+                          </div>
                        </div>
                     </div>
                   )}
 
-                  {/* BACK OF CARD (Navy & Gold Corporate Style) */}
+                  {/* BACK OF CARD (White Theme with Green, Grey, and Purple Accents) */}
                   {showingBack && (
-                    <div id="id-card-back" className="absolute inset-0 bg-white rounded-[24px] overflow-hidden shadow-2xl border border-gray-300 flex flex-col font-sans">
-                      
-                      {/* Lanyard Hole for Back */}
-                      <div className="absolute top-4 left-1/2 -translate-x-1/2 w-20 h-4 bg-white/30 rounded-full border border-gray-300 shadow-inner z-30"></div>
+                    <div id="id-card-back" className="absolute inset-0 bg-white rounded-[22px] overflow-hidden shadow-2xl border-2 border-slate-200 flex flex-col font-sans select-none">
+                       
+                       {/* Lanyard Hole for Back */}
+                       <div className="absolute top-2 left-1/2 -translate-x-1/2 w-16 h-2.5 bg-slate-100 rounded-full border border-slate-300 shadow-inner z-30"></div>
 
-                      {/* Angular Header Replica */}
-                      <div className="w-full h-[140px] relative bg-white shrink-0">
-                         <svg width="856" height="140" viewBox="0 0 856 140" className="absolute top-0 left-0 z-0">
-                           <rect width="856" height="140" fill="#0b1f38" />
-                           <polygon points="550,0 520,100 540,100 510,140 495,140 525,100 505,100 535,0" fill="#c5a059" />
-                           <polygon points="540,0 510,100 530,100 500,140 480,140 510,100 490,100 520,0" fill="#ffffff" />
-                         </svg>
-                         
-                         <div className="absolute inset-0 flex z-10">
-                           <div className="w-[520px] flex items-center pl-16">
-                              <span className="text-white text-2xl font-bold tracking-[0.15em] uppercase">Terms and Conditions</span>
-                           </div>
-                           <div className="flex-1 flex items-center justify-center gap-5 pl-8">
-                              <div className="bg-white p-1.5 rounded-xl shadow-md">
-                                <img src="/defineddomain.png" className="w-16 h-16 object-contain" />
-                              </div>
-                              <div className="text-white flex flex-col justify-center">
-                                 <h3 className="font-extrabold text-2xl leading-none tracking-widest uppercase">Defined Domains</h3>
-                                 <p className="text-[11px] tracking-[0.2em] text-[#c5a059] mt-1.5 uppercase font-bold">Inclusive School</p>
-                              </div>
-                           </div>
-                         </div>
-                      </div>
+                       {/* Header */}
+                       <div className="w-full h-[88px] bg-slate-900 shrink-0 flex items-center justify-between px-7 border-b-4 border-emerald-500">
+                          <div className="flex items-center gap-3.5">
+                             <div className="bg-white p-1 rounded-lg shadow-sm">
+                                <img src="/defineddomain.png" className="w-10 h-10 object-contain" alt="Logo" />
+                             </div>
+                             <div className="text-white flex flex-col">
+                                <h3 className="font-black text-xl leading-none tracking-wider uppercase">Defined Domains</h3>
+                                <p className="text-[10px] tracking-[0.2em] text-emerald-400 mt-1 uppercase font-bold">Terms of Use & Student Record</p>
+                             </div>
+                          </div>
+                          <div className="bg-purple-900/60 border border-purple-400/40 px-3 py-1 rounded-lg">
+                             <span className="text-[10px] font-bold text-purple-200 uppercase tracking-wider">Campus Security</span>
+                          </div>
+                       </div>
 
-                      {/* Terms Body */}
-                      <div className="flex-1 p-10 px-16 flex flex-col justify-between">
-                         <div className="space-y-6">
-                            <div className="flex items-start gap-5">
-                               <div className="w-2 h-2 rounded-sm bg-[#c5a059] mt-2 shrink-0"></div>
-                               <p className="text-[15px] text-gray-700 font-medium leading-relaxed pr-10">
-                                  This card remains the property of Defined Domains and must be returned upon request. It is strictly non-transferable and issued for the sole purpose of student identification and campus security.
-                               </p>
-                            </div>
-                            <div className="flex items-start gap-5">
-                               <div className="w-2 h-2 rounded-sm bg-[#c5a059] mt-2 shrink-0"></div>
-                               <p className="text-[15px] text-gray-700 font-medium leading-relaxed pr-10">
-                                  Grants access to Special Needs Education, Learning Disabilities, Behavior Modification, Individualised Educational Programes, Speech & Occupational Therapies, and Basic Sign Language Training.
-                               </p>
-                            </div>
-                         </div>
-
-                         {/* Footer Info Block */}
-                         <div className="flex justify-between items-end mt-4 pt-6 border-t border-gray-200">
-                            
-                            {/* Contact Grid */}
-                            <div className="grid grid-cols-[auto_1fr] gap-x-5 gap-y-2.5 text-[14px]">
-                               <span className="font-bold text-gray-400 uppercase tracking-wider text-[11px] flex items-center">Phone</span>
-                               <span className="font-bold text-[#0b1f38]">: 071 451 5323 | 0772 944 837</span>
-                               
-                               <span className="font-bold text-gray-400 uppercase tracking-wider text-[11px] flex items-center">Mail</span>
-                               <span className="font-bold text-[#0b1f38]">: info@defineddomains.co.zw</span>
-                               
-                               <span className="font-bold text-gray-400 uppercase tracking-wider text-[11px] flex items-center">Website</span>
-                               <span className="font-bold text-[#0b1f38]">: www.defineddomains.co.zw</span>
-                            </div>
-
-                            {/* Signature Center */}
-                            <div className="flex flex-col items-center pb-2 px-10">
-                               <p className="text-4xl font-['Brush_Script_MT',_cursive,_serif] text-[#0b1f38] -mb-1 z-10 italic">Def. Dom.</p>
-                               <span className="font-bold text-[14px] text-[#0b1f38] tracking-[0.2em] uppercase relative z-20">Principal</span>
-                            </div>
-
-                            {/* Barcode & Dates */}
-                            <div className="flex flex-col items-end">
-                               <div className="mb-4 border border-gray-300 p-2 flex justify-center bg-white rounded-lg">
-                                  <Barcode value={newlyAddedStudent.id.toUpperCase()} width={1.8} height={40} displayValue={false} margin={0} background="transparent" />
-                               </div>
-                               <div className="grid grid-cols-[auto_1fr] gap-x-3 gap-y-1.5 text-[12px]">
-                                  <span className="font-bold text-gray-400 uppercase tracking-wider text-[10px] flex items-center">Joined Date</span>
-                                  <span className="font-bold text-[#0b1f38]">: 28/MAY/2024</span>
-                                  
-                                  <span className="font-bold text-gray-400 uppercase tracking-wider text-[10px] flex items-center">Expire Date</span>
-                                  <span className="font-bold text-[#0b1f38]">: 28/MAY/2026</span>
+                       {/* Terms Body */}
+                       <div className="flex-1 p-5 px-7 flex gap-6 justify-between">
+                          {/* Left Column: Terms & Skills */}
+                          <div className="flex-1 flex flex-col justify-between pr-4 border-r border-slate-200">
+                             <div>
+                                <h4 className="text-xs font-black text-purple-900 uppercase tracking-wider mb-2">Terms and Conditions</h4>
+                                <div className="space-y-1.5 text-[11px] text-slate-600 font-medium leading-relaxed">
+                                   <p className="flex items-start gap-2">
+                                      <span className="text-emerald-600 font-black">•</span>
+                                      This card is the property of Defined Domains and must be presented upon request. Strictly non-transferable.
+                                   </p>
+                                   <p className="flex items-start gap-2">
+                                      <span className="text-emerald-600 font-black">•</span>
+                                      Grants access to Special Needs Education, IEP Programs, Therapies, and Campus Facilities.
+                                   </p>
                                 </div>
-                            </div>
+                             </div>
 
-                         </div>
-                      </div>
+                             {/* Curriculum Badges */}
+                             <div>
+                                <h4 className="text-[10px] font-bold text-slate-400 uppercase tracking-widest mb-1.5">Curriculum & Therapies</h4>
+                                <div className="grid grid-cols-2 gap-1.5">
+                                   {[
+                                      'Special Needs Education',
+                                      'Learning Disabilities',
+                                      'Behavior Modification',
+                                      'IEP Programs',
+                                      'Speech & OT Therapies',
+                                      'Basic Sign Language'
+                                   ].map((skill, idx) => (
+                                      <div key={idx} className="flex items-center gap-1.5 bg-slate-50 border border-slate-200 px-2 py-1 rounded-md">
+                                         <div className="w-3 h-3 rounded-full bg-emerald-500 flex items-center justify-center shrink-0">
+                                            <span className="text-white text-[8px] font-bold">✓</span>
+                                         </div>
+                                         <span className="text-[9.5px] font-bold text-slate-700 truncate">{skill}</span>
+                                      </div>
+                                   ))}
+                                </div>
+                             </div>
+                          </div>
+
+                          {/* Right Column: Prominent QR & Contact */}
+                          <div className="w-[280px] flex flex-col justify-between items-center bg-purple-50/70 border-2 border-purple-500 rounded-2xl p-3.5 shadow-xs">
+                             <div className="text-center w-full">
+                                <p className="text-[10px] font-black text-purple-900 uppercase tracking-wider mb-1.5">Identity Verification</p>
+                                <div className="bg-white p-2 rounded-xl shadow-sm border border-slate-200 inline-block">
+                                   <QRCode value={`https://${window.location.host}/defined-domains/${newlyAddedStudent.slug}`} size={105} fgColor="#0f172a" />
+                                </div>
+                                <p className="text-[9px] text-slate-500 font-semibold mt-1">Scan for Verified Profile</p>
+                             </div>
+
+                             {/* Contact Details */}
+                             <div className="w-full pt-2 border-t border-purple-200 text-center text-[10.5px]">
+                                <p className="font-bold text-slate-900">Phone: 071 451 5323 | 0772 944 837</p>
+                                <p className="font-bold text-purple-700">info@defineddomains.co.zw</p>
+                                <p className="text-[9.5px] text-slate-500 font-medium">24 Eliot Street, Rhodene, Masvingo</p>
+                             </div>
+                          </div>
+                       </div>
+
+                       {/* Footer */}
+                       <div className="w-full h-[38px] bg-slate-900 text-white px-7 flex items-center justify-between border-t-2 border-purple-500 z-20">
+                          <span className="text-[10px] font-bold text-slate-300 uppercase font-mono tracking-widest">ID: {newlyAddedStudent.id.toUpperCase()}</span>
+                          <span className="text-[9.5px] font-bold text-emerald-400 uppercase tracking-wider">Property of Defined Domains Institute</span>
+                       </div>
 
                     </div>
                   )}
