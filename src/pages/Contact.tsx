@@ -1,6 +1,6 @@
 import { Seo } from "../components/Seo";
 import React, { useState } from "react";
-import { motion, AnimatePresence } from "framer-motion";
+import { motion, AnimatePresence } from "motion/react";
 import { Paperclip, Star, ChevronLeft, ChevronRight } from "lucide-react";
 import PhoneInput, {
   getCountries,

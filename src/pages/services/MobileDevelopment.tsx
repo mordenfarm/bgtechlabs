@@ -1,7 +1,7 @@
 import { Seo } from "../../components/Seo";
 import React from "react";
 
-import { motion } from "framer-motion";
+import { motion } from "motion/react";
 import { Link } from "react-router-dom";
 import {
   ArrowLeft,

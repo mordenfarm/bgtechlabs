@@ -1,19 +1,37 @@
 import { initializeApp } from "firebase/app";
 import { initializeFirestore } from "firebase/firestore";
-import { getAuth, GoogleAuthProvider } from "firebase/auth";
+import { getAuth, GoogleAuthProvider, Auth } from "firebase/auth";
 
 const firebaseConfig = {
-  apiKey: "AIzaSyCZDYeCEKrXYJZNTQsVdECVBLUYVJMxe0c",
-  authDomain: "bg-tl-de4e0.firebaseapp.com",
-  projectId: "bg-tl-de4e0",
-  storageBucket: "bg-tl-de4e0.firebasestorage.app",
-  messagingSenderId: "390966791643",
-  appId: "1:390966791643:web:67ca1e592d965e966bebfe"
+  apiKey: import.meta.env.VITE_FIREBASE_API_KEY || "",
+  authDomain: import.meta.env.VITE_FIREBASE_AUTH_DOMAIN || "demo-project.firebaseapp.com",
+  projectId: import.meta.env.VITE_FIREBASE_PROJECT_ID || "demo-project",
+  storageBucket: import.meta.env.VITE_FIREBASE_STORAGE_BUCKET || "demo-project.appspot.com",
+  messagingSenderId: import.meta.env.VITE_FIREBASE_MESSAGING_SENDER_ID || "000000000000",
+  appId: import.meta.env.VITE_FIREBASE_APP_ID || "1:000000000000:web:0000000000000000000000"
 };
 
 const app = initializeApp(firebaseConfig);
 export const db = initializeFirestore(app, {
   experimentalForceLongPolling: true
 });
-export const auth = getAuth(app);
+
+let authInstance: Auth;
+try {
+  authInstance = getAuth(app);
+} catch {
+  authInstance = new Proxy({} as Auth, {
+    get: (_target, prop) => {
+      if (prop === "onAuthStateChanged") {
+        return (cb: (user: null) => void) => {
+          if (typeof cb === "function") cb(null);
+          return () => {};
+        };
+      }
+      return () => Promise.resolve();
+    }
+  });
+}
+
+export const auth = authInstance;
 export const googleProvider = new GoogleAuthProvider();

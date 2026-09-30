@@ -1,6 +1,6 @@
 import React from 'react';
 import { Seo } from '../components/Seo';
-import { motion } from 'framer-motion';
+import { motion } from 'motion/react';
 
 export function Privacy() {
   return (

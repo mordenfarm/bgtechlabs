@@ -1,6 +1,6 @@
 import { Seo } from "../components/Seo";
 import React from 'react';
-import { motion } from 'framer-motion';
+import { motion } from 'motion/react';
 import { Link } from 'react-router-dom';
 import { ArrowRight, Star, CheckCircle2, Lightbulb, CheckCircle, Smartphone, Code, Cpu, LineChart, Globe, Zap, LayoutTemplate, Activity, Users, Shield, ArrowUpRight } from 'lucide-react';
 

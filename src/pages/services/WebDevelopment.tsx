@@ -1,6 +1,6 @@
 import { Seo } from "../../components/Seo";
 import React from 'react';
-import { motion } from 'framer-motion';
+import { motion } from 'motion/react';
 import { ArrowLeft, ArrowRight, Globe, Layers, Search, Server, Monitor, Code, Smartphone, Database, Zap, Cpu } from 'lucide-react';
 import { Link } from 'react-router-dom';
 

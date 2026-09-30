@@ -18,16 +18,19 @@ import { onAuthStateChanged, signOut, User as FirebaseUser } from "firebase/auth
 export function Header() {
   const [searchParams, setSearchParams] = useSearchParams();
   const [activeDropdown, setActiveDropdown] = React.useState<string | null>(null);
-  const [showTopBar, setShowTopBar] = React.useState(true);
   const isMenuOpen = searchParams.get("menu") === "true";
   
   const [user, setUser] = useState<FirebaseUser | null>(null);
 
   useEffect(() => {
-    const unsubscribe = onAuthStateChanged(auth, (currentUser) => {
-      setUser(currentUser);
-    });
-    return () => unsubscribe();
+    try {
+      const unsubscribe = onAuthStateChanged(auth, (currentUser) => {
+        setUser(currentUser);
+      });
+      return () => unsubscribe();
+    } catch (e) {
+      console.warn("Firebase Auth not configured:", e);
+    }
   }, []);
 
   const openLoginModal = () => {
@@ -59,105 +62,7 @@ export function Header() {
   };
 
   return (
-    <header className="w-full flex flex-col font-sans sticky top-0 lg:top-[-40px] z-50">
-      {/* Top Bar - Hidden on mobile */}
-      {showTopBar && (
-        <div className="hidden lg:block w-full text-white/90 text-sm" style={{ background: "linear-gradient(90deg, #0f0f0f 0%, #1a1a2e 40%, #16213e 70%, #0f3460 100%)" }}>
-          <div className="w-full px-5 lg:px-8 h-10 flex items-center justify-between relative">
-            <div className="flex h-full gap-6">
-              <Link
-                to="/products"
-                className="h-full flex items-center hover:text-white transition-colors font-bold gap-2"
-              >
-                Products
-                <span style={{
-  position: "relative",
-  overflow: "hidden",
-  display: "inline-block",
-  background: "#ef4444",
-  color: "white",
-  fontSize: "10px",
-  fontWeight: "700",
-  padding: "2px 6px",
-  borderRadius: "4px",
-  letterSpacing: "0.05em",
-  textTransform: "uppercase",
-  lineHeight: 1,
-}}>
-  New
-  <span style={{
-    position: "absolute",
-    top: 0,
-    left: "-100%",
-    width: "60%",
-    height: "100%",
-    background: "linear-gradient(90deg, transparent, rgba(255,255,255,0.5), transparent)",
-    animation: "shimmer 1.8s infinite",
-  }} />
-  <style>{`
-    @keyframes shimmer {
-      0%   { left: -100%; }
-      100% { left: 200%; }
-    }
-  `}</style>
-</span>
-              </Link>
-              
-              <Link
-                to="/vibe-code-seminar"
-                className="h-full flex items-center hover:text-white transition-colors font-bold gap-2"
-              >
-                Vibe-Code Seminar
-                <span style={{
-                  position: "relative",
-                  overflow: "hidden",
-                  display: "inline-block",
-                  background: "linear-gradient(90deg, #9333ea, #3b82f6)",
-                  color: "white",
-                  fontSize: "10px",
-                  fontWeight: "700",
-                  padding: "2px 6px",
-                  borderRadius: "4px",
-                  letterSpacing: "0.05em",
-                  textTransform: "uppercase",
-                  lineHeight: 1,
-                }}>
-                  {Math.max(0, Math.ceil((new Date('2026-08-15T00:00:00').getTime() - new Date().getTime()) / (1000 * 3600 * 24)))} days left
-                  <span style={{
-                    position: "absolute",
-                    top: 0,
-                    left: "-100%",
-                    width: "60%",
-                    height: "100%",
-                    background: "linear-gradient(90deg, transparent, rgba(255,255,255,0.8), transparent)",
-                    animation: "shimmer 1.8s infinite",
-                  }} />
-                </span>
-              </Link>
-            </div>
-            <div className="flex items-center gap-4">
-              <div className="flex items-center gap-2">
-                <span className="font-medium tracking-wide">
-                  Plan your custom software project with precision
-                </span>
-                <Link
-                  to="/estimate"
-                  className="font-bold underline text-white hover:text-gray-300 transition-colors ml-1"
-                >
-                  Estimate Now
-                </Link>
-              </div>
-              <button
-                onClick={() => setShowTopBar(false)}
-                className="flex items-center justify-center text-white/80 hover:text-white transition-colors p-1"
-              >
-                <X className="w-4 h-4 text-white" />
-              </button>
-            </div>
-          </div>
-        </div>
-      )}
-
+    <header className="w-full flex flex-col font-sans sticky top-0 z-50">
       {/* Main Navigation */}
       <div
         className="w-full bg-white border-b border-gray-100 relative z-40"
