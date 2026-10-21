@@ -68,7 +68,7 @@ export function Header() {
         className="w-full bg-white border-b border-gray-100 relative z-40"
         onMouseLeave={() => setActiveDropdown(null)}
       >
-        <div className="max-w-[1400px] mx-auto px-4 lg:px-6 h-14 lg:h-20 flex items-center justify-between">
+        <div className="relative w-full px-4 lg:px-10 h-14 lg:h-20 flex items-center justify-between">
           {/* Logo & Left Nav */}
           <div className="flex items-center gap-8 h-full">
             {/* Logo */}
@@ -88,7 +88,7 @@ export function Header() {
             </Link>
 
             {/* Nav Links - Hidden on mobile */}
-            <nav className="hidden lg:flex items-center h-full gap-6 text-[15px] font-medium text-gray-800">
+            <nav className="hidden lg:flex items-center h-full gap-6 absolute left-1/2 -translate-x-1/2 top-0 text-[15px] font-medium text-gray-800">
               <div
                 className="h-full flex items-center"
                 onMouseEnter={() => setActiveDropdown(null)}

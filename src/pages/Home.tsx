@@ -1,5 +1,6 @@
 import React, { useState, useEffect, useCallback, useRef } from 'react';
 import { Seo } from '../components/Seo';
+import { ServicesShowcase } from '../components/ServicesShowcase';
 import { Link } from 'react-router-dom';
 import { ChevronRight, ChevronLeft, Smartphone, Code, MonitorPlay, Film, PenTool, BrainCircuit, ArrowRight } from 'lucide-react';
 import { motion, AnimatePresence } from 'motion/react';
@@ -496,144 +497,10 @@ const renderSlideAssets = (index: number) => {
   }
 };
 
-const services = [
-  {
-    title: "Mobile Apps Development",
-    tags: ['Enterprise & B2E', 'Logistics & Delivery', 'Digital Banking & Wallets', 'E-Commerce & Retail'],
-    description: "We helped with developing comprehensive support solutions for internal processes and collaborative tools.",
-    buttonText: "Do a 1-2 Testing",
-    flexDirection: "lg:flex-row",
-    bgClass: "bg-[#fcf2ae]",
-    textPaddingX: "lg:pr-10",
-    lgPaddingX: "lg:pl-16 xl:pl-20",
-    visualContent: () => (
-      <div className="w-[200px] h-[200px] sm:w-[380px] sm:h-[380px] lg:w-[460px] lg:h-[460px] xl:w-[500px] xl:h-[500px] rounded-full overflow-hidden flex items-center justify-center relative bg-gray-50 border-[4px] border-white/20 shadow-sm">
-        <video
-          src="/phone.mp4"
-          autoPlay
-          loop
-          muted
-          playsInline
-          className="absolute inset-0 w-full h-full object-cover"
-          style={{ filter: "brightness(1.05) contrast(1.05)" }}
-        />
-      </div>
-    )
-  },
-  {
-    title: "Custom Enterprise Systems",
-    tags: ['School Management Systems', 'School Portals', 'Healthcare Systems', 'Custom Business Software'],
-    description: "We architect scalable enterprise software solutions to streamline operations, enhance security, and drive digital transformation.",
-    buttonText: "Do a 1-2 Testing",
-    flexDirection: "lg:flex-row-reverse",
-    bgClass: "bg-[#e0f2fe]",
-    textPaddingX: "lg:pl-10",
-    lgPaddingX: "lg:pr-16 xl:pr-20",
-    visualContent: () => (
-       <div className="w-[200px] h-[200px] sm:w-[380px] sm:h-[380px] lg:w-[460px] lg:h-[460px] xl:w-[500px] xl:h-[500px] rounded-full overflow-hidden flex items-center justify-center relative bg-black/5 border-[4px] border-white/40 shadow-sm">
-         <video
-           src="/laptop.mp4"
-           autoPlay
-           loop
-           muted
-           playsInline
-           className="absolute inset-0 w-full h-full object-cover"
-         />
-       </div>
-    )
-  },
-  {
-    title: "Electronic Security Systems",
-    tags: ['Access Control Systems', 'CCTV Systems (View Anywhere)', 'Telematics Systems'],
-    description: "Protect your business assets with advanced security solutions. Monitor state-of-the-art camera feeds straight from your phone, manage who enters your facilities, and reliably track vehicle fleets.",
-    buttonText: "View Our Previous Work",
-    flexDirection: "lg:flex-row",
-    bgClass: "bg-[#ecfdf5]",
-    textPaddingX: "lg:pr-10",
-    lgPaddingX: "lg:pl-16 xl:pl-20",
-    visualContent: () => (
-       <div className="relative w-[200px] h-[200px] sm:w-[380px] sm:h-[380px] lg:w-[460px] lg:h-[460px] xl:w-[500px] xl:h-[500px]">
-         <div className="w-full h-full rounded-full overflow-hidden flex items-center justify-center relative bg-white border-[4px] border-white/40 shadow-sm">
-           <img
-             src="/facescan.gif"
-             alt="Face Scan Security"
-             className="absolute inset-0 w-full h-full object-cover"
-             style={{ objectPosition: "center" }}
-           />
-         </div>
-
-         {/* Floating CCTV GIF */}
-         <motion.div 
-           initial={{ opacity: 0, scale: 0.7 }}
-           whileInView={{ opacity: 1, scale: 1 }}
-           viewport={{ once: true }}
-           transition={{ delay: 0.3, duration: 0.6, type: "spring", bounce: 0.4 }}
-           className="absolute -bottom-2 -right-4 sm:bottom-4 sm:-right-4 lg:bottom-10 lg:-right-8 w-[70px] h-[70px] sm:w-[120px] sm:h-[120px] lg:w-[150px] lg:h-[150px] xl:w-[180px] xl:h-[180px] rounded-full overflow-hidden border-[3px] sm:border-[4px] border-white shadow-2xl z-10 bg-white"
-         >
-           <img src="/cctv.gif" alt="CCTV Feed" className="w-full h-full object-cover" />
-         </motion.div>
-
-         {/* Floating Fingerprint GIF */}
-         <motion.div 
-           initial={{ opacity: 0, scale: 0.7 }}
-           whileInView={{ opacity: 1, scale: 1 }}
-           viewport={{ once: true }}
-           transition={{ delay: 0.5, duration: 0.6, type: "spring", bounce: 0.4 }}
-           className="absolute -top-2 -left-4 sm:top-4 sm:-left-4 lg:top-10 lg:-left-8 w-[60px] h-[60px] sm:w-[100px] sm:h-[100px] lg:w-[120px] lg:h-[120px] xl:w-[140px] xl:h-[140px] rounded-full overflow-hidden border-[3px] sm:border-[4px] border-gray-900 shadow-[0_0_25px_rgba(59,130,246,0.8)] z-10 bg-black items-center justify-center flex"
-         >
-           <img src="/fingerprint.gif" alt="Fingerprint Scan" className="w-[80%] h-[80%] object-contain" />
-         </motion.div>
-       </div>
-    )
-  },
-  {
-    title: "AI Autonomous Agents",
-    tags: ['Smart Automation', 'Virtual Employees', 'Self-Governing AI'],
-    description: "Smart AI programs that understand complex tasks, think for themselves, and take action without needing a human to guide every step.",
-    buttonText: "Book a Demo",
-    flexDirection: "lg:flex-row-reverse",
-    bgClass: "bg-[#f3e8ff]",
-    textPaddingX: "lg:pl-10",
-    lgPaddingX: "lg:pr-16 xl:pr-20",
-    visualContent: () => (
-      <div className="w-[200px] h-[200px] sm:w-[380px] sm:h-[380px] lg:w-[460px] lg:h-[460px] xl:w-[500px] xl:h-[500px] rounded-full overflow-hidden flex items-center justify-center relative bg-white border-[4px] border-white/40 shadow-sm">
-        <img
-          src="/aivideo.gif"
-          alt="AI Agent Interface"
-          className="absolute inset-0 w-full h-full object-cover"
-          style={{ objectPosition: "center" }}
-        />
-      </div>
-    )
-  }
-];
-
 export function Home() {
   const [current, setCurrent] = useState(0);
   const [touchStartX, setTouchStartX] = useState<number | null>(null);
   const [touchEndX, setTouchEndX] = useState<number | null>(null);
-
-  // Services Slider State
-  const [activeServiceIndex, setActiveServiceIndex] = useState(0);
-  const [serviceDirection, setServiceDirection] = useState(1);
-
-  const nextService = () => {
-    setServiceDirection(1);
-    setActiveServiceIndex((prev) => (prev + 1) % services.length);
-  };
-
-  const prevService = () => {
-    setServiceDirection(-1);
-    setActiveServiceIndex((prev) => (prev - 1 + services.length) % services.length);
-  };
-
-  useEffect(() => {
-    const timer = setInterval(() => {
-      setServiceDirection(1);
-      setActiveServiceIndex((prev) => (prev + 1) % services.length);
-    }, 5000);
-    return () => clearInterval(timer);
-  }, []);
 
   const navigate = useCallback((to: number) => {
     setCurrent(to);
@@ -681,508 +548,105 @@ export function Home() {
       <h1 className="sr-only">Blackgift Tech Labs - Digital Tech & Branding Agency</h1>
 
       {/* ── Advanced Full-Viewport Slider Hero ── */}
-      <section 
-        className="relative w-full h-[calc(100vh-80px)] lg:h-[calc(100vh-120px)] overflow-hidden flex items-center justify-between text-white touch-pan-y shadow-inner bg-black will-change-transform"
-        onTouchStart={handleTouchStart}
-        onTouchMove={handleTouchMove}
-        onTouchEnd={handleTouchEnd}
-      >
-        {/* Darkened Background Video */}
-        <div className="absolute inset-0 z-0">
-          <video
-            autoPlay
-            loop
-            muted
-            playsInline
-            className="w-full h-full object-cover opacity-50 mix-blend-luminosity will-change-transform"
-          >
-            <source src="/Fox_howling_at_full_moon.mp4" type="video/mp4" />
-          </video>
-          <div className="absolute inset-0 bg-black/40" />
-        </div>
-
-        {/* Layered Cross-fading Backdrop Gradients */}
-        <AnimatePresence mode="popLayout" initial={false}>
-          <motion.div
-            key={current}
-            initial={{ opacity: 0 }}
-            animate={{ opacity: 0.8 }}
-            exit={{ opacity: 0 }}
-            transition={{ duration: 1.1 }}
-            className="absolute inset-0 z-0 mix-blend-overlay will-change-transform"
-            style={{ background: `linear-gradient(135deg, ${c1} 0%, ${c2} 55%, ${c3} 100%)` }}
-          />
-        </AnimatePresence>
-
-        {/* Ambient Decorative Orbs */}
-        <div style={{ animation: 'orb1 12s ease-in-out infinite', background: `radial-gradient(circle, ${c2}cc, transparent 70%)` }}
-             className="absolute top-[-5%] left-[-5%] w-[35vw] h-[35vw] rounded-full opacity-20 pointer-events-none z-0" />
-        <div style={{ animation: 'orb2 15s ease-in-out infinite', background: `radial-gradient(circle, ${c3}cc, transparent 70%)` }}
-             className="absolute bottom-[-5%] right-[10%] w-[40vw] h-[40vw] rounded-full opacity-25 pointer-events-none z-0" />
-
-        {/* Wavy lines decoration */}
-        <svg className="absolute bottom-0 left-0 w-full pointer-events-none z-0 opacity-40" viewBox="0 0 1200 300" preserveAspectRatio="none" style={{ height: '40%' }}>
-          <path style={{ animation: 'wave1 6s ease-in-out infinite' }} fill="rgba(255,255,255,0.04)"
-                d="M0,160 C200,100 400,220 600,160 C800,100 1000,180 1200,160 L1200,300 L0,300 Z" />
-          <path style={{ animation: 'wave2 8s ease-in-out infinite' }} fill="rgba(255,255,255,0.06)"
-                d="M0,200 C150,140 350,260 550,200 C750,140 950,220 1200,200 L1200,300 L0,300 Z" />
-          <path style={{ animation: 'wave3 10s ease-in-out infinite' }} fill="rgba(255,255,255,0.09)"
-                d="M0,240 C250,180 450,300 700,240 C900,190 1050,260 1200,240 L1200,300 L0,300 Z" />
-        </svg>
-
-        {/* Shimmer layout */}
-        <div style={{ animation: 'shimmer 4s ease-in-out infinite', animationDelay: '1s' }}
-             className="absolute top-0 left-0 w-1/3 h-full bg-white/5 pointer-events-none z-0" />
-
-        {/* Edge Arrow Buttons (Glassmorphic) */}
-        <button 
-          onClick={() => setCurrent((current - 1 + slides.length) % slides.length)}
-          className="hidden sm:flex absolute left-4 sm:left-10 top-1/2 -translate-y-1/2 w-11 h-11 sm:w-16 sm:h-16 items-center justify-center bg-white/10 hover:bg-white/20 hover:scale-105 active:scale-95 backdrop-blur-md rounded-full border border-white/20 transition-all z-20 text-white cursor-pointer group shadow-xl"
-          aria-label="Previous Slide"
-        >
-          <ChevronLeft className="w-5 h-5 sm:w-8 sm:h-8 transition-transform group-hover:-translate-x-0.5" />
-        </button>
-        <button 
-          onClick={() => setCurrent((current + 1) % slides.length)}
-          className="hidden sm:flex absolute right-4 sm:right-10 top-1/2 -translate-y-1/2 w-11 h-11 sm:w-16 sm:h-16 items-center justify-center bg-white/10 hover:bg-white/20 hover:scale-105 active:scale-95 backdrop-blur-md rounded-full border border-white/20 transition-all z-20 text-white cursor-pointer group shadow-xl"
-          aria-label="Next Slide"
-        >
-          <ChevronRight className="w-5 h-5 sm:w-8 sm:h-8 transition-transform group-hover:translate-x-0.5" />
-        </button>
-
-        {/* Dynamic Inner Grid */}
-        <div className="relative w-full h-full max-w-[1440px] mx-auto px-6 sm:px-16 lg:px-24 flex flex-col lg:flex-row items-center justify-center lg:justify-between gap-8 sm:gap-12 z-10 pt-16 lg:pt-0 pb-16 lg:pb-0">
-          
-          {/* Staggered Text Slide Content */}
-          <div className="flex-1 flex flex-col items-center sm:items-start text-center sm:text-left text-white max-w-2xl lg:max-w-2xl select-none z-10 pr-0 lg:pr-8 mt-10 lg:mt-0">
-            <AnimatePresence mode="wait">
-              <motion.div
-                key={current}
-                initial="hidden"
-                animate="visible"
-                exit="exit"
-                variants={{
-                  hidden: { opacity: 0, x: -50 },
-                  visible: {
-                    opacity: 1,
-                    x: 0,
-                    transition: {
-                      staggerChildren: 0.1,
-                      delayChildren: 0.05,
-                    }
-                  },
-                  exit: {
-                    opacity: 0,
-                    x: 50,
-                    transition: {
-                      duration: 0.25
-                    }
-                  }
-                }}
-                className="flex flex-col items-center sm:items-start w-full"
-              >
-                {/* Badge Tag */}
-                <motion.span
-                  variants={{
-                    hidden: { opacity: 0, y: 15 },
-                    visible: { opacity: 1, y: 0, transition: { type: "spring", stiffness: 100 } }
-                  }}
-                  className="inline-block text-xs sm:text-sm lg:text-xs font-bold uppercase tracking-[0.25em] bg-white/15 border border-white/25 backdrop-blur-sm px-5 py-2 sm:px-4 sm:py-1.5 rounded-full mb-6 sm:mb-8 lg:mb-6"
-                >
-                  {slide.tag}
-                </motion.span>
-
-                {/* Main Dynamic Big Title */}
-                <motion.h2
-                  variants={{
-                    hidden: { opacity: 0, y: 25 },
-                    visible: { opacity: 1, y: 0, transition: { type: "spring", stiffness: 85, damping: 14 } }
-                  }}
-                  className="text-4xl min-[380px]:text-5xl sm:text-6xl lg:text-[56px] xl:text-[68px] leading-[1.15] sm:leading-[1.1] lg:leading-[1.1] font-hero uppercase tracking-tight mb-6 sm:mb-8 lg:mb-6"
-                >
-                  {slide.title}
-                </motion.h2>
-
-                {/* Subtitle description */}
-                <motion.p
-                  variants={{
-                    hidden: { opacity: 0, y: 15 },
-                    visible: { opacity: 1, y: 0, transition: { duration: 0.4 } }
-                  }}
-                  className="text-base sm:text-xl lg:text-lg leading-relaxed text-white/80 max-w-md sm:max-w-2xl lg:max-w-xl mb-8 sm:mb-12 lg:mb-10"
-                >
-                  {slide.subtitle}
-                </motion.p>
-
-                {/* Call To Action Button */}
-                <motion.div
-                  variants={{
-                    hidden: { opacity: 0, scale: 0.9 },
-                    visible: { opacity: 1, scale: 1, transition: { type: "spring", stiffness: 120 } }
-                  }}
-                >
-                  <Link to={slide.link} className="inline-block text-[13px] sm:text-[15px] lg:text-sm relative overflow-hidden bg-white text-gray-950 font-extrabold px-8 py-4 sm:px-10 sm:py-5 lg:px-8 lg:py-4.5 rounded-full hover:bg-gray-50 hover:scale-105 active:scale-95 transition-all duration-200 shadow-2xl group cursor-pointer tracking-wider">
-                    <span className="relative z-10">{slide.cta}</span>
-                    <span className="absolute inset-0 bg-white/40 -translate-x-full group-hover:translate-x-full transition-transform duration-600 skew-x-[-15deg]" />
-                  </Link>
-                </motion.div>
-              </motion.div>
-            </AnimatePresence>
-          </div>
-
-          {/* Staggered Glassmorphic Illustration */}
-          <div className="hidden lg:flex flex-1 relative w-full h-[320px] sm:h-[400px] lg:h-[460px] items-center justify-center max-w-md lg:max-w-lg z-10">
-            <AnimatePresence mode="popLayout" initial={false}>
-              <motion.div 
-                key={current} 
-                className="absolute inset-0 flex items-center justify-center"
-              >
-                {renderSlideAssets(current)}
-              </motion.div>
-            </AnimatePresence>
-          </div>
-
-        </div>
-
-        {/* Indicators Panel of dots */}
-        <div className="absolute bottom-6 sm:bottom-10 left-1/2 -translate-x-1/2 flex items-center gap-2.5 z-20">
-          {slides.map((_, i) => (
-            <button 
-              key={i} 
-              onClick={() => setCurrent(i)}
-              className={`rounded-full transition-all duration-300 cursor-pointer ${i === current ? 'w-8 h-2 bg-white' : 'w-2 h-2 bg-white/40 hover:bg-white/70'}`} 
-            />
-          ))}
-        </div>
+      <section className="relative w-full h-[calc(100svh-164px)] md:h-[calc(100svh-168px)] lg:h-[calc(100svh-192px)]">
+        <img
+          src="/robotics-lab.png"
+          alt="Modern Robotics and Learning Lab"
+          className="w-full h-full object-cover object-[54%_100%] block"
+        />
+        <h2 className="absolute top-6 md:top-10 lg:top-14 inset-x-0 px-4 text-center font-hero text-3xl lg:text-4xl xl:text-5xl 2xl:text-6xl tracking-widest text-white leading-tight uppercase">
+          <span className="block md:inline">Software</span>
+          <span className="hidden md:inline"> · </span>
+          <span className="block md:inline">Robotics</span>
+          <span className="hidden md:inline"> · </span>
+          <span className="block md:inline">Media</span>
+        </h2>
       </section>
 
 
       {/* ── Latest Releases Section ── */}
-      <section className="w-full relative py-24 overflow-hidden flex flex-col items-center" style={{
-        backgroundColor: '#12122b',
-        backgroundImage: 'radial-gradient(circle, rgba(255,255,255,0.1) 1.5px, transparent 1.5px)',
-        backgroundSize: '32px 32px',
-        backgroundPosition: '0 0, 16px 16px'
-      }}>
-        {/* Subtle top/bottom gradients to blend with adjacent sections if needed */}
-        <div className="absolute inset-0 bg-gradient-to-b from-[#12122b] via-transparent to-[#12122b] opacity-50 pointer-events-none" />
-        
-        <motion.h2 
-          initial={{ opacity: 0, y: 20 }}
+      <section className="w-full relative pt-0 pb-8 overflow-hidden flex flex-col items-center bg-white">
+        {/* White strip rail of product logos */}
+        <motion.div
+          initial={{ opacity: 0, y: 30 }}
           whileInView={{ opacity: 1, y: 0 }}
           viewport={{ once: true }}
-          className="text-4xl md:text-5xl font-extrabold text-white mb-16 relative z-10 tracking-tight"
+          className="w-full bg-white px-4 sm:px-6 py-4 relative z-10"
         >
-          Our Latest Releases
-        </motion.h2>
-        
-        <div className="w-full max-w-[1200px] mx-auto px-6 grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-4 gap-6 relative z-10">
-          
-          {/* Card 1: Examsidemann */}
-          <motion.div 
-            initial={{ opacity: 0, y: 30 }}
-            whileInView={{ opacity: 1, y: 0 }}
-            viewport={{ once: true }}
-            transition={{ delay: 0.1 }}
-            className="bg-white rounded-3xl p-3 flex flex-col shadow-[0_10px_40px_-10px_rgba(0,0,0,0.5)] transform hover:-translate-y-2 transition-all duration-300 group"
-          >
-            <div className="w-full aspect-square rounded-[20px] bg-gradient-to-br from-[#f8fafc] to-[#e2e8f0] flex items-center justify-center mb-5 overflow-hidden relative shadow-inner">
-              <img src="https://i.ibb.co/6RdXZMmW/es-logo.png" alt="ExamSidemann Logo" className="w-20 h-20 object-contain relative z-10 group-hover:scale-110 transition-transform duration-500" />
+          <h2 className="text-xl md:text-2xl font-extrabold text-[#1a1528] mb-4 text-center tracking-tight">WE CREATED</h2>
+          <div className="overflow-hidden">
+            <div className="flex w-max animate-logo-rail">
+              {[0, 1].map((copy) => (
+                <div key={copy} className="flex shrink-0" aria-hidden={copy === 1}>
+                  {[
+                    { src: '/logos/rail/examsidemann.png', width: 305, alt: 'ExamSidemann — the handheld teacher', name: 'Examsidemann' },
+                    { src: '/logos/rail/saviour.png', width: 79, alt: 'Saviour Logo', name: 'Saviour' },
+                    { src: '/logos/rail/e-razor.png', width: 121, alt: 'E-Razor Logo', name: 'E-Razor' },
+                    { src: '/logos/rail/code-droid.png', width: 65, alt: 'Code Droid Logo', name: 'Code Droid' },
+                    { src: '/logos/rail/defined-domains.png', width: 64, alt: 'Defined Domains Inclusive School Logo', name: 'Defined Domains' },
+                    { src: '/logos/rail/coha.png', width: 70, alt: 'Circle of Hope Academy Logo', name: 'COHA' },
+                    { src: '/logos/rail/vocal-sign.png', width: 68, alt: 'Vocal Sign red hands logo', name: 'Vocal Sign' },
+                    { src: '/logos/rail/knockout.png', width: 132, alt: 'Knockout Logo', name: 'Knockout Invoicing App' },
+                    { src: '/logos/rail/matina.png', width: 90, alt: 'Matina Logo', name: 'Matina Invoicing App' },
+                    { src: '/logos/rail/siesta.png', width: 65, alt: 'Siesta Logo', name: 'Siesta' },
+                    { src: '/logos/rail/service-loop.png', width: 65, alt: 'Service Loop Logo', name: 'Service Loop' },
+                    { src: '/logos/rail/maguna.png', width: 65, alt: 'maguna Logo', name: 'maguna' },
+                    { src: '/logos/rail/ritz.png', width: 65, alt: 'Ritz temporary web file sharing app logo', name: 'Ritz' },
+                    { src: '/logos/rail/lado.png', width: 65, alt: 'Lado learn coding app logo', name: 'Lado' },
+                    { src: '/logos/rail/robo-spark.png', width: 65, alt: 'Robo-Spark robotics guided learning app logo', name: 'Robo-Spark' },
+                    { src: '/logos/rail/vmax.png', width: 65, alt: 'VMax autonomous personal AI agent logo', name: 'VMax' },
+                  ].map((logo) => (
+                    <div key={logo.name} className="flex shrink-0 flex-col items-center min-w-44 px-6">
+                      <img src={logo.src} alt={logo.alt} width={Math.round(logo.width * 0.75)} height={48} style={{ width: Math.round(logo.width * 0.75), height: 48 }} className="block shrink-0 object-contain" />
+                    </div>
+                  ))}
+                </div>
+              ))}
             </div>
-            <h3 className="text-[#1a1528] font-bold text-[17px] text-center pb-2">Examsidemann</h3>
-          </motion.div>
-
-          {/* Card 2: Saviour */}
-          <motion.div 
-            initial={{ opacity: 0, y: 30 }}
-            whileInView={{ opacity: 1, y: 0 }}
-            viewport={{ once: true }}
-            transition={{ delay: 0.2 }}
-            className="bg-white rounded-3xl p-3 flex flex-col shadow-[0_10px_40px_-10px_rgba(0,0,0,0.5)] transform hover:-translate-y-2 transition-all duration-300 group"
-          >
-            <div className="w-full aspect-square rounded-[20px] bg-gradient-to-br from-[#f8fafc] to-[#e2e8f0] flex items-center justify-center mb-5 overflow-hidden relative shadow-inner">
-              <img src="/saviourai.png" alt="Saviour Logo" className="w-20 h-20 object-contain relative z-10 group-hover:scale-110 transition-transform duration-500 rounded-2xl shadow-sm" />
-            </div>
-            <h3 className="text-[#1a1528] font-bold text-[17px] text-center pb-2">Saviour</h3>
-          </motion.div>
-
-          {/* Card 3: E-Razor */}
-          <motion.div 
-            initial={{ opacity: 0, y: 30 }}
-            whileInView={{ opacity: 1, y: 0 }}
-            viewport={{ once: true }}
-            transition={{ delay: 0.3 }}
-            className="bg-white rounded-3xl p-3 flex flex-col shadow-[0_10px_40px_-10px_rgba(0,0,0,0.5)] transform hover:-translate-y-2 transition-all duration-300 group"
-          >
-            <div className="w-full aspect-square rounded-[20px] bg-gradient-to-br from-[#f8fafc] to-[#e2e8f0] flex items-center justify-center mb-5 overflow-hidden relative shadow-inner">
-              <img src="/e-razor.png" alt="E-Razor Logo" className="w-20 h-20 object-contain relative z-10 group-hover:scale-110 transition-transform duration-500 rounded-xl" />
-            </div>
-            <h3 className="text-[#1a1528] font-bold text-[17px] text-center pb-2">E-Razor</h3>
-          </motion.div>
-
-          {/* Card 4: Code Droid */}
-          <motion.div 
-            initial={{ opacity: 0, y: 30 }}
-            whileInView={{ opacity: 1, y: 0 }}
-            viewport={{ once: true }}
-            transition={{ delay: 0.4 }}
-            className="bg-white rounded-3xl p-3 flex flex-col shadow-[0_10px_40px_-10px_rgba(0,0,0,0.5)] transform hover:-translate-y-2 transition-all duration-300 group"
-          >
-            <div className="w-full aspect-square rounded-[20px] bg-gradient-to-br from-[#f8fafc] to-[#e2e8f0] flex items-center justify-center mb-5 overflow-hidden relative shadow-inner">
-              <img src="/code-droid.png" alt="Code Droid Logo" className="w-20 h-20 object-contain relative z-10 group-hover:scale-110 transition-transform duration-500 rounded-xl shadow-sm" />
-            </div>
-            <h3 className="text-[#1a1528] font-bold text-[17px] text-center pb-2">Code Droid</h3>
-          </motion.div>
-
-        </div>
-
-        <motion.div 
-          initial={{ opacity: 0, y: 20 }}
-          whileInView={{ opacity: 1, y: 0 }}
-          viewport={{ once: true }}
-          transition={{ delay: 0.5 }}
-          className="mt-16 relative z-10"
-        >
-          <Link to="/products" className="inline-flex items-center justify-center gap-2 bg-[#F99B28] hover:bg-[#E08A20] text-gray-900 font-bold text-[15px] px-8 py-4 rounded-full transition-all shadow-xl hover:-translate-y-1">
-            View all products <ArrowRight className="w-5 h-5" />
-          </Link>
+          </div>
         </motion.div>
       </section>
 
-      {/* ── Standard Page Content Grid ── */}
-      <div className="w-full max-w-[1400px] mx-auto px-4 sm:px-6 py-12 sm:py-20 flex flex-col items-center">
+      <ServicesShowcase />
 
-        {/* Popular Products & Services */}
-        <section className="w-full max-w-[1200px] mb-20 px-4">
-          <motion.div 
-            initial="hidden"
-            whileInView="visible"
-            viewport={{ once: true, margin: "-50px" }}
-            variants={{
-              hidden: { opacity: 0 },
-              visible: { 
-                opacity: 1,
-                transition: { staggerChildren: 0.15 }
-              }
-            }}
-            className="flex flex-col items-center justify-center mb-8 sm:mb-12"
-          >
-            <div className="flex items-center justify-center w-full overflow-hidden">
-              <motion.div 
-                variants={{ hidden: { x: "-100%" }, visible: { x: 0, transition: { duration: 0.8, ease: "circOut" } } }}
-                className="h-px bg-gray-300 flex-grow max-w-[40px] sm:max-w-[200px]" 
-              />
-              <motion.h2 
-                variants={{ 
-                  hidden: { y: 80, opacity: 0, rotateX: 60 }, 
-                  visible: { y: 0, opacity: 1, rotateX: 0, transition: { type: "spring", bounce: 0.4, duration: 1.2 } } 
-                }}
-                className="text-lg sm:text-3xl font-bold text-center text-gray-900 px-3 sm:px-6 tracking-tight whitespace-nowrap"
-                style={{ transformPerspective: 1000 }}
-              >
-                Services We Provide
-              </motion.h2>
-              <motion.div 
-                variants={{ hidden: { x: "100%" }, visible: { x: 0, transition: { duration: 0.8, ease: "circOut" } } }}
-                className="h-px bg-gray-300 flex-grow max-w-[40px] sm:max-w-[200px]" 
-              />
-            </div>
-            <motion.p 
-              variants={{ hidden: { y: 20, opacity: 0, filter: 'blur(5px)' }, visible: { y: 0, opacity: 1, filter: 'blur(0px)', transition: { duration: 0.7, ease: "easeOut" } } }}
-              className="text-gray-500 text-center text-[11px] sm:text-base max-w-2xl mt-3 sm:mt-5 px-4 leading-relaxed will-change-transform"
-            >
-              We leverage cutting-edge technology and creative expertise to deliver scalable, high-performance solutions tailored to your unique business goals.
-            </motion.p>
-          </motion.div>
-          <motion.div 
-            initial="hidden"
-            whileInView="visible"
-            viewport={{ once: true, margin: "-100px" }}
-            variants={{
-              hidden: {},
-              visible: { transition: { staggerChildren: 0.12 } }
-            }}
-            className="grid grid-cols-3 md:grid-cols-6 gap-y-8 gap-x-2 md:gap-x-4 lg:gap-x-8 pb-4 md:pb-0 px-2 md:px-0 max-w-5xl mx-auto"
-            style={{ perspective: '1200px' }}
-          >
-            <CategoryCard className="w-full" title="Web Dev"         href="/services/web-development" icon={<Code        className="w-6 h-6 sm:w-8 sm:h-8 text-gray-900" />} />
-            <CategoryCard className="w-full" title="Mobile Apps"     href="/services/mobile-development" icon={<Smartphone  className="w-6 h-6 sm:w-8 sm:h-8 text-gray-900" />} />
-            <CategoryCard className="w-full" title="Adverts"         href="/services" icon={<MonitorPlay className="w-6 h-6 sm:w-8 sm:h-8 text-gray-900" />} />
-            <CategoryCard className="w-full" title="Videography"     href="/services" icon={<Film        className="w-6 h-6 sm:w-8 sm:h-8 text-gray-900" />} />
-            <CategoryCard className="w-full" title="Branding"        href="/services" icon={<PenTool     className="w-6 h-6 sm:w-8 sm:h-8 text-gray-900" />} />
-            <CategoryCard className="w-full" title="AI Solutions"    href="/services/ai-development" icon={<BrainCircuit className="w-6 h-6 sm:w-8 sm:h-8 text-gray-900" />} />
-          </motion.div>
-        </section>
-
-      </div>
-
-      {/* Services Slider Section */}
-      <section className="w-full max-w-[1400px] mx-auto px-4 sm:px-6 lg:px-8 mb-20 lg:mb-32">
-        <div className="relative w-full h-[650px] sm:h-[680px] lg:h-[640px] flex justify-center items-center perspective-1000">
-           <AnimatePresence initial={false} custom={serviceDirection}>
-             <motion.div
-               key={activeServiceIndex}
-               custom={serviceDirection}
-               variants={{
-                 enter: (direction: number) => ({
-                   x: direction > 0 ? 1000 : -1000,
-                   opacity: 0,
-                   scale: 0.8,
-                   rotateY: direction > 0 ? 45 : -45,
-                   filter: "blur(5px)",
-                 }),
-                 center: {
-                   zIndex: 1,
-                   x: 0,
-                   opacity: 1,
-                   scale: 1,
-                   rotateY: 0,
-                   filter: "blur(0px)",
-                 },
-                 exit: (direction: number) => ({
-                   zIndex: 0,
-                   x: direction < 0 ? 1000 : -1000,
-                   opacity: 0,
-                   scale: 0.8,
-                   rotateY: direction < 0 ? 45 : -45,
-                   filter: "blur(5px)",
-                 })
-               }}
-               initial="enter"
-               animate="center"
-               exit="exit"
-               transition={{
-                 x: { type: "spring", stiffness: 300, damping: 30 },
-                 opacity: { duration: 0.4 },
-                 rotateY: { type: "spring", stiffness: 300, damping: 30 },
-                 scale: { duration: 0.4 },
-                 filter: { duration: 0.4 }
-               }}
-               className={`absolute w-full rounded-[32px] overflow-hidden flex flex-col ${services[activeServiceIndex].flexDirection} items-center pt-8 lg:pt-0 ${services[activeServiceIndex].lgPaddingX} pb-0 shadow-sm ${services[activeServiceIndex].bgClass} h-full border border-gray-100`}
-             >
-               {/* Text Side */}
-               <div className={`flex-1 w-full flex flex-col items-center lg:items-start text-center lg:text-left px-5 sm:px-12 lg:px-0 py-5 lg:py-20 ${services[activeServiceIndex].textPaddingX} shrink-0`}>
-                 <div className="flex items-center gap-3 mb-4 sm:mb-8 text-center justify-center lg:text-left lg:justify-start">
-                   <h2 className="text-[22px] sm:text-3xl lg:text-[32px] font-extrabold text-gray-900 tracking-tight font-hero uppercase leading-tight text-center lg:text-left">
-                     {services[activeServiceIndex].title}
-                   </h2>
-                 </div>
-                 
-                 <div className="flex flex-wrap justify-center lg:justify-start gap-1.5 mb-5 sm:mb-10 max-w-lg lg:max-w-none">
-                   {services[activeServiceIndex].tags.map(tag => (
-                     <span key={tag} className="px-3 py-1.5 rounded-full border border-gray-900/10 text-gray-800 text-[10px] sm:text-xs md:text-sm font-medium tracking-wide">
-                       {tag}
-                     </span>
-                   ))}
-                 </div>
-
-                 <h3 className="text-lg sm:text-2xl md:text-3xl lg:text-[36px] font-bold text-gray-900 leading-[1.3] max-w-md sm:max-w-xl mb-8">
-                   {services[activeServiceIndex].description}
-                 </h3>
-
-                 <motion.button 
-                   whileHover={{ scale: 1.05 }}
-                   whileTap={{ scale: 0.95 }}
-                   className="bg-gray-900 hover:bg-gray-800 text-white font-bold text-sm sm:text-base px-6 py-3 sm:px-8 sm:py-3.5 rounded-full shadow-lg transition-colors cursor-pointer"
-                 >
-                   {services[activeServiceIndex].buttonText}
-                 </motion.button>
-               </div>
-
-               {/* Visual Side */}
-               <div className="w-full lg:w-[45%] shrink-0 flex items-center justify-center mt-2 lg:mt-0 py-4 lg:py-12 pb-6 lg:pb-12 h-[220px] sm:h-[350px] lg:h-[640px] relative">
-                 {services[activeServiceIndex].visualContent()}
-               </div>
-             </motion.div>
-           </AnimatePresence>
-        </div>
-        
-        {/* Navigation Buttons for Services Slider */}
-        <div className="flex justify-center items-center gap-6 mt-8">
-           <button 
-             onClick={prevService}
-             className="w-12 h-12 rounded-full border border-gray-200 bg-white shadow-sm flex items-center justify-center hover:bg-gray-50 transition-colors z-20 text-gray-600 hover:text-[#3b6ee9]"
-             aria-label="Previous Service"
-           >
-             <ChevronLeft className="w-6 h-6" />
-           </button>
-           
-           <div className="flex gap-2 relative z-20 items-center">
-             {services.map((_, i) => (
-                <button 
-                  key={i} 
-                  onClick={() => {
-                    setServiceDirection(i > activeServiceIndex ? 1 : -1);
-                    setActiveServiceIndex(i);
-                  }}
-                  className={`h-2 rounded-full transition-all duration-300 ${activeServiceIndex === i ? 'w-10 bg-gray-900' : 'w-2 bg-gray-300 hover:bg-gray-400'}`} 
-                  aria-label={`Go to service ${i + 1}`}
-                />
-             ))}
-           </div>
-           
-           <button 
-             onClick={nextService}
-             className="w-12 h-12 rounded-full border border-gray-200 bg-white shadow-sm flex items-center justify-center hover:bg-gray-50 transition-colors z-20 text-gray-600 hover:text-[#3b6ee9]"
-             aria-label="Next Service"
-           >
-             <ChevronRight className="w-6 h-6" />
-           </button>
-        </div>
-      </section>
-
-      {/* Latest Solutions Section */}
-      <div className="w-full overflow-hidden bg-[#1D0606] relative text-white border-b border-[#3A1010]">
-        {/* Background gradient/glow effect */}
-        <div className="absolute inset-0 bg-[radial-gradient(ellipse_at_right,_var(--tw-gradient-stops))] from-[#4A0A0A]/40 via-[#1D0606] to-[#1D0606]"></div>
-        
-        <div className="relative z-10 flex flex-col lg:flex-row items-center justify-between px-[20px] md:px-[60px] py-16 md:py-24 max-w-[1400px] mx-auto">
-          
-          <div className="w-full lg:w-[45%] flex flex-col items-start mb-16 lg:mb-0">
-            <h2 className="text-4xl md:text-5xl lg:text-[60px] leading-[1.1] font-light tracking-tight mb-6">
-              THE FASTEST <br />
-              INFERENCE IS <br />
-              NOW <br />
-              <span className="text-[#FF3B30] font-normal">OFFLINE</span>
+      {/* Saviour Offline AI */}
+      <section aria-labelledby="offline-ai-heading" className="relative w-full overflow-hidden border-b border-gray-200 bg-white text-[#1a1528]">
+        <div className="mx-auto grid max-w-[1500px] items-center gap-12 px-6 py-16 sm:px-12 lg:grid-cols-[0.85fr_1.3fr] lg:gap-14 lg:px-16 lg:py-24">
+          <div className="text-center lg:text-left">
+            <p className="mb-5 text-xs font-bold uppercase tracking-[0.2em] text-purple-700">Saviour Offline AI</p>
+            <h2 id="offline-ai-heading" className="text-4xl font-light leading-[1.08] tracking-tight sm:text-5xl xl:text-[58px]">
+              YOUR AI.<br />ON YOUR DEVICE.<br /><span className="font-medium text-[#FF174D]">EVEN OFFLINE.</span>
             </h2>
-            <p className="text-base md:text-lg text-white/80 max-w-md mb-8 leading-relaxed">
-              Saviour Offline AI is now running locally on your device with LLAMA 1.5B PARAMETER. 10x more private than cloud.
+            <p className="mx-auto mt-6 max-w-lg text-base leading-relaxed text-gray-600 lg:mx-0">
+              Ask questions, draft ideas, and get help without an internet connection. Saviour runs AI locally on your device after setup.
             </p>
-            <AnalyticsLink 
-              href="https://sidemann-app-store.vercel.app/" 
-              target="_blank"
-              rel="noopener noreferrer"
-              className="bg-white text-black px-10 py-3 text-sm font-bold tracking-widest uppercase hover:bg-gray-200 transition-colors"
-              buttonName="Saviour_AI_Read_More"
-            >
-              READ MORE
+            <div className="mt-7 space-y-5 text-left">
+              <div className="border-l-2 border-purple-600 pl-4">
+                <h3 className="font-bold">On your phone</h3>
+                <p className="mt-1 text-sm leading-relaxed text-gray-600">Chat with Saviour directly on a compatible phone. The AI runs on the phone itself, so local chats work without Wi-Fi or mobile data.</p>
+              </div>
+              <div className="border-l-2 border-[#FF174D] pl-4">
+                <h3 className="font-bold">From your USB drive</h3>
+                <p className="mt-1 text-sm leading-relaxed text-gray-600">Carry the AI app and model on a flash drive. Plug it into a compatible computer to run your offline assistant. The USB stores the kit; the computer runs the AI.</p>
+              </div>
+            </div>
+            <AnalyticsLink href="https://sidemann-app-store.vercel.app/" target="_blank" rel="noopener noreferrer" className="mt-8 inline-flex items-center justify-center gap-4 bg-black px-7 py-3.5 text-sm font-bold text-white transition-colors hover:bg-purple-800" buttonName="Saviour_AI_Read_More">
+              Explore Saviour AI <ArrowRight className="h-4 w-4" />
             </AnalyticsLink>
           </div>
-
-          <div className="w-full lg:w-[50%] relative flex justify-center items-center min-h-[300px]">
-            {/* Glowing Projection Effect */}
-            <div className="relative w-full max-w-lg aspect-video flex items-center justify-center">
-              <div className="absolute bottom-0 w-3/4 h-1/4 bg-[#FF3B30] rounded-full blur-[100px] opacity-30"></div>
-              
-              <div className="relative z-10 flex flex-col items-center">
-                <img src="/saviourai.png" alt="Saviour Offline AI" className="w-32 h-32 md:w-48 md:h-48 rounded-3xl shadow-[0_0_50px_rgba(255,59,48,0.3)] object-cover mb-8" />
-              </div>
-            </div>
-
-            {/* Bottom Logos */}
-            <div className="absolute bottom-0 right-0 flex items-center gap-6 pb-4">
-              <div className="flex items-center gap-3">
-                <img src="/llama-language-model-logo.webp" alt="LLAMA" className="h-10 w-auto object-contain brightness-0 invert" onError={(e) => e.currentTarget.style.display = 'none'} />
-                <span className="text-white font-bold text-2xl tracking-tighter">LLAMA</span>
-              </div>
-              <div className="h-8 w-px bg-white/20"></div>
-              <div className="flex items-center gap-2 text-[#4F8AFF]">
-                 <span className="text-2xl font-light">1.5B PARAMETER</span>
-              </div>
-            </div>
+          <div className="relative grid grid-cols-[0.85fr_1.15fr] items-center gap-3 sm:gap-6">
+            <div aria-hidden="true" className="pointer-events-none absolute inset-[10%] rounded-full bg-purple-100/70 blur-3xl" />
+            <figure className="relative min-w-0 self-start">
+              <img src="/saviour/phone-chat.png" alt="Saviour AI chat interface on a phone, showing an offline indicator and a daily planning conversation" className="h-[290px] w-full object-contain sm:h-[430px] lg:h-[460px]" loading="lazy" />
+              <figcaption className="mt-4 text-center text-sm font-semibold text-[#1a1528]">AI on your phone<span className="mt-1 block text-xs font-normal text-gray-500">Chat locally. No connection needed.</span></figcaption>
+            </figure>
+            <figure className="relative min-w-0 self-end">
+              <img src="/saviour/usb-kit.png" alt="Black and red Saviour USB flash drive beside a laptop running the offline AI chat interface" className="h-[250px] w-full object-contain sm:h-[350px] lg:h-[380px]" loading="lazy" />
+              <figcaption className="mt-4 text-center text-sm font-semibold text-[#1a1528]">AI you can carry<span className="mt-1 block text-xs font-normal text-gray-500">Your USB kit. Your computer.</span></figcaption>
+            </figure>
           </div>
         </div>
-      </div>
+      </section>
 
       {/* Let's Talk Section */}
       <motion.section 

@@ -40,3 +40,11 @@
   -ms-overflow-style: none;  /* IE and Edge */
   scrollbar-width: none;  /* Firefox */
 }
+
+@keyframes logo-rail {
+  from { transform: translateX(0); }
+  to { transform: translateX(-50%); }
+}
+.animate-logo-rail {
+  animation: logo-rail 20s linear infinite;
+}
