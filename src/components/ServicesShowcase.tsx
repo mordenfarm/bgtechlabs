@@ -14,8 +14,19 @@ const services = [
   { name: 'Branding', lead: 'Make your mark.', title: 'Be remembered.', description: 'Distinctive logos, packaging, and visual identities that give your business a consistent, confident voice.', image: 'branding', href: '/services', cta: 'Explore branding' },
 ];
 
-const SLIDE_SECONDS = 7;
+const SLIDE_SECONDS = 3;
 const accents = ['#36d9dc', '#b49aff', '#48e3b0', '#ffbd59', '#729bff', '#ff7bb4', '#e5ba79', '#c59aff'];
+// Light, mid, and edge stops of each slide's radial background.
+const backgrounds = [
+  ['#204c5d', '#0b3548', '#032b3c'],
+  ['#2b2566', '#18144a', '#0c0a2e'],
+  ['#1c4a3e', '#0d3128', '#061f19'],
+  ['#3d3a36', '#201e1c', '#0f0e0d'],
+  ['#1f3a80', '#112459', '#081438'],
+  ['#5a1b4a', '#36102d', '#1c0818'],
+  ['#4f2a22', '#2b1511', '#140a08'],
+  ['#3f2459', '#251436', '#13091d'],
+];
 const ease = [0.22, 1, 0.36, 1] as const;
 
 function ServiceSlide({ index, direction, reduced }: { key?: number; index: number; direction: number; reduced: boolean }) {
@@ -71,13 +82,12 @@ export function ServicesShowcase() {
   const [active, setActive] = useState(0);
   const [direction, setDirection] = useState(1);
   const [paused, setPaused] = useState(false);
-  const [hovered, setHovered] = useState(false);
   const [focused, setFocused] = useState(false);
   const section = useRef<HTMLElement>(null);
   const inView = useInView(section, { amount: 0.25 });
   const reducedMotion = useReducedMotion();
   const progress = useMotionValue(0);
-  const running = !paused && !hovered && !focused && inView && !reducedMotion;
+  const running = !paused && !focused && inView && !reducedMotion;
   const select = useCallback((index: number, travel?: number) => {
     const next = (index + services.length) % services.length;
     if (next === active) return;
@@ -96,10 +106,9 @@ export function ServicesShowcase() {
   }, [active, running, progress]);
 
   return (
-    <section ref={section} aria-label="Services we provide" aria-roledescription="carousel" className="relative isolate w-full overflow-hidden bg-[#052e40] text-white"
-      style={{ backgroundImage: 'radial-gradient(ellipse at 85% 35%, #204c5d 0%, #0b3548 45%, #032b3c 85%)' }}
-      onMouseEnter={() => setHovered(true)} onMouseLeave={() => setHovered(false)}
-      onFocusCapture={() => setFocused(true)} onBlurCapture={(event) => { if (!event.currentTarget.contains(event.relatedTarget)) setFocused(false); }}
+    <motion.section ref={section} aria-label="Services we provide" aria-roledescription="carousel" className="relative isolate w-full overflow-hidden bg-[#052e40] text-white"
+      initial={false} animate={{ backgroundImage: `radial-gradient(ellipse at 85% 35%, ${backgrounds[active][0]} 0%, ${backgrounds[active][1]} 45%, ${backgrounds[active][2]} 85%)` }} transition={{ duration: reducedMotion ? 0 : 1.2 }}
+      onFocusCapture={(event) => setFocused(event.target.matches(':focus-visible'))} onBlurCapture={(event) => { if (!event.currentTarget.contains(event.relatedTarget)) setFocused(false); }}
     >
       <motion.div aria-hidden="true" className="pointer-events-none absolute -right-24 top-0 h-full w-2/3 opacity-[0.13]" animate={{ backgroundColor: accents[active], rotate: reducedMotion ? 0 : active % 2 ? 12 : -12 }} transition={{ duration: reducedMotion ? 0 : 1.5 }} style={{ maskImage: 'radial-gradient(ellipse, black, transparent 65%)' }} />
       <div className="relative mx-auto max-w-[1680px] px-8 sm:px-16 lg:px-24 pt-14 lg:pt-20 pb-10">
@@ -109,11 +118,11 @@ export function ServicesShowcase() {
         </div>
         <div className="mt-7 flex flex-wrap justify-center items-center gap-2" aria-label="Select a service">
           {services.map((item, index) => <button key={item.image} type="button" onClick={() => select(index)} aria-label={`Show ${item.name}`} aria-current={index === active ? 'true' : undefined} className="group flex h-10 min-w-7 items-center justify-center focus-visible:outline focus-visible:outline-2 focus-visible:outline-[#ffc144]"><span className={`relative block h-2.5 overflow-hidden rounded-full transition-all duration-500 ${index === active ? 'w-12 bg-white/20' : 'w-2.5 bg-white/45 group-hover:bg-white'}`}>{index === active && <motion.span className="absolute inset-0 origin-left rounded-full bg-[#edae18]" style={{ scaleX: reducedMotion ? 1 : progress }} />}</span></button>)}
-          <button type="button" onClick={() => setPaused(!paused)} aria-label={paused ? 'Play service slideshow' : 'Pause service slideshow'} aria-pressed={paused} className="ml-2 flex h-10 w-10 items-center justify-center rounded-full bg-[#004353] hover:bg-[#00576a] focus-visible:outline focus-visible:outline-2 focus-visible:outline-[#ffc144]">{paused ? <Play className="h-4 w-4" /> : <Pause className="h-4 w-4" />}</button>
+          <button type="button" onClick={() => setPaused(!paused)} aria-label={paused ? 'Play service slideshow' : 'Pause service slideshow'} aria-pressed={paused} className="ml-2 flex h-10 w-10 items-center justify-center rounded-full bg-white/10 hover:bg-white/20 focus-visible:outline focus-visible:outline-2 focus-visible:outline-[#ffc144]">{paused ? <Play className="h-4 w-4" /> : <Pause className="h-4 w-4" />}</button>
         </div>
       </div>
       <button type="button" onClick={() => select(active - 1, -1)} aria-label="Previous service" className="absolute left-0 top-1/2 flex h-14 w-7 sm:w-10 -translate-y-1/2 items-center justify-center bg-black/20 hover:bg-black/40 focus-visible:outline focus-visible:outline-2 focus-visible:outline-[#ffc144]"><ChevronLeft className="h-6 w-6" /></button>
       <button type="button" onClick={() => select(active + 1, 1)} aria-label="Next service" className="absolute right-0 top-1/2 flex h-14 w-7 sm:w-10 -translate-y-1/2 items-center justify-center bg-black/20 hover:bg-black/40 focus-visible:outline focus-visible:outline-2 focus-visible:outline-[#ffc144]"><ChevronRight className="h-6 w-6" /></button>
-    </section>
+    </motion.section>
   );
 }

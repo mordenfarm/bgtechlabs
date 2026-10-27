@@ -72,19 +72,10 @@ export function Header() {
           {/* Logo & Left Nav */}
           <div className="flex items-center gap-8 h-full">
             {/* Logo */}
-            <Link to="/" className="flex items-center gap-2">
-              <div className="flex items-center justify-center w-9 h-9 lg:w-9 lg:h-9 w-6 h-6 bg-black rounded-full flex-shrink-0 overflow-hidden">
-                <img
-                  src="https://i.ibb.co/1GWbN1WD/blackgiftlogo.png"
-                  alt="Blackgift Logo"
-                  className="h-[20px] w-[20px] lg:h-[28px] lg:w-[28px] object-contain filter brightness-0 invert"
-                />
-              </div>
-              <div className="flex flex-col justify-center">
-                <span className="font-hero text-sm lg:text-xl tracking-widest text-black leading-none uppercase">
-                  BLACKGIFT
-                </span>
-              </div>
+            <Link to="/" aria-label="Blackgift home" className="inline-flex shrink-0 items-center text-black">
+              <span className="font-hero inline-flex items-center whitespace-nowrap text-sm uppercase leading-none tracking-widest lg:text-xl">
+                <span>BLACK</span><span className="text-[#858585]">GIFT</span>
+              </span>
             </Link>
 
             {/* Nav Links - Hidden on mobile */}

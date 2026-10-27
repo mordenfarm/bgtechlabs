@@ -545,105 +545,75 @@ export function Home() {
         keywords="digital agency, tech company, branding agency, website development, mobile app development, motion graphics, videography services, Blackgift Tech"
         canonical="/"
       />
-      <h1 className="sr-only">Blackgift Tech Labs - Digital Tech & Branding Agency</h1>
-
-      {/* ── Advanced Full-Viewport Slider Hero ── */}
-      <section className="relative w-full h-[calc(100svh-164px)] md:h-[calc(100svh-168px)] lg:h-[calc(100svh-192px)]">
-        <img
-          src="/robotics-lab.png"
-          alt="Modern Robotics and Learning Lab"
-          className="w-full h-full object-cover object-[54%_100%] block"
-        />
-        <h2 className="absolute top-6 md:top-10 lg:top-14 inset-x-0 px-4 text-center font-hero text-3xl lg:text-4xl xl:text-5xl 2xl:text-6xl tracking-widest text-white leading-tight uppercase">
-          <span className="block md:inline">Software</span>
-          <span className="hidden md:inline"> · </span>
-          <span className="block md:inline">Robotics</span>
-          <span className="hidden md:inline"> · </span>
-          <span className="block md:inline">Media</span>
-        </h2>
-      </section>
-
-
-      {/* ── Latest Releases Section ── */}
-      <section className="w-full relative pt-0 pb-8 overflow-hidden flex flex-col items-center bg-white">
-        {/* White strip rail of product logos */}
-        <motion.div
-          initial={{ opacity: 0, y: 30 }}
-          whileInView={{ opacity: 1, y: 0 }}
-          viewport={{ once: true }}
-          className="w-full bg-white px-4 sm:px-6 py-4 relative z-10"
-        >
-          <h2 className="text-xl md:text-2xl font-extrabold text-[#1a1528] mb-4 text-center tracking-tight">WE CREATED</h2>
-          <div className="overflow-hidden">
-            <div className="flex w-max animate-logo-rail">
-              {[0, 1].map((copy) => (
-                <div key={copy} className="flex shrink-0" aria-hidden={copy === 1}>
-                  {[
-                    { src: '/logos/rail/examsidemann.png', width: 305, alt: 'ExamSidemann — the handheld teacher', name: 'Examsidemann' },
-                    { src: '/logos/rail/saviour.png', width: 79, alt: 'Saviour Logo', name: 'Saviour' },
-                    { src: '/logos/rail/e-razor.png', width: 121, alt: 'E-Razor Logo', name: 'E-Razor' },
-                    { src: '/logos/rail/code-droid.png', width: 65, alt: 'Code Droid Logo', name: 'Code Droid' },
-                    { src: '/logos/rail/defined-domains.png', width: 64, alt: 'Defined Domains Inclusive School Logo', name: 'Defined Domains' },
-                    { src: '/logos/rail/coha.png', width: 70, alt: 'Circle of Hope Academy Logo', name: 'COHA' },
-                    { src: '/logos/rail/vocal-sign.png', width: 68, alt: 'Vocal Sign red hands logo', name: 'Vocal Sign' },
-                    { src: '/logos/rail/knockout.png', width: 132, alt: 'Knockout Logo', name: 'Knockout Invoicing App' },
-                    { src: '/logos/rail/matina.png', width: 90, alt: 'Matina Logo', name: 'Matina Invoicing App' },
-                    { src: '/logos/rail/siesta.png', width: 65, alt: 'Siesta Logo', name: 'Siesta' },
-                    { src: '/logos/rail/service-loop.png', width: 65, alt: 'Service Loop Logo', name: 'Service Loop' },
-                    { src: '/logos/rail/maguna.png', width: 65, alt: 'maguna Logo', name: 'maguna' },
-                    { src: '/logos/rail/ritz.png', width: 65, alt: 'Ritz temporary web file sharing app logo', name: 'Ritz' },
-                    { src: '/logos/rail/lado.png', width: 65, alt: 'Lado learn coding app logo', name: 'Lado' },
-                    { src: '/logos/rail/robo-spark.png', width: 65, alt: 'Robo-Spark robotics guided learning app logo', name: 'Robo-Spark' },
-                    { src: '/logos/rail/vmax.png', width: 65, alt: 'VMax autonomous personal AI agent logo', name: 'VMax' },
-                  ].map((logo) => (
-                    <div key={logo.name} className="flex shrink-0 flex-col items-center min-w-44 px-6">
-                      <img src={logo.src} alt={logo.alt} width={Math.round(logo.width * 0.75)} height={48} style={{ width: Math.round(logo.width * 0.75), height: 48 }} className="block shrink-0 object-contain" />
-                    </div>
-                  ))}
-                </div>
-              ))}
-            </div>
+      <section aria-labelledby="hero-heading" className="w-full overflow-hidden bg-[#f5f5f7] pt-12 text-center text-[#1d1d1f] sm:pt-14">
+        <div className="px-5">
+          <h1 id="hero-heading" className="text-[38px] font-semibold leading-[1.08] tracking-tight sm:text-5xl lg:text-[56px]">
+            We Design Solutions
+          </h1>
+          <p className="mt-3 text-xl leading-tight tracking-tight sm:text-[28px]">Software &amp; Robotics</p>
+          <div className="mt-6 flex flex-wrap justify-center gap-4">
+            <Link to="/services" className="rounded-full bg-black px-6 py-2.5 text-base text-white transition-colors hover:bg-neutral-800">
+              Learn more
+            </Link>
+            <Link to="/contact" className="rounded-full border border-black px-6 py-2.5 text-base text-black transition-colors hover:bg-black hover:text-white">
+              Get in touch
+            </Link>
           </div>
-        </motion.div>
+        </div>
+        <img
+          src="/examsidemann/tablet-in-hands-transparent.png"
+          alt="A child's hands holding a tablet displaying Examsidemann"
+          width={1633}
+          height={963}
+          fetchPriority="high"
+          className="mx-auto mt-9 block h-auto w-full max-w-[900px] sm:mt-11"
+        />
       </section>
+
 
       <ServicesShowcase />
 
-      {/* Saviour Offline AI */}
-      <section aria-labelledby="offline-ai-heading" className="relative w-full overflow-hidden border-b border-gray-200 bg-white text-[#1a1528]">
-        <div className="mx-auto grid max-w-[1500px] items-center gap-12 px-6 py-16 sm:px-12 lg:grid-cols-[0.85fr_1.3fr] lg:gap-14 lg:px-16 lg:py-24">
-          <div className="text-center lg:text-left">
-            <p className="mb-5 text-xs font-bold uppercase tracking-[0.2em] text-purple-700">Saviour Offline AI</p>
-            <h2 id="offline-ai-heading" className="text-4xl font-light leading-[1.08] tracking-tight sm:text-5xl xl:text-[58px]">
-              YOUR AI.<br />ON YOUR DEVICE.<br /><span className="font-medium text-[#FF174D]">EVEN OFFLINE.</span>
-            </h2>
-            <p className="mx-auto mt-6 max-w-lg text-base leading-relaxed text-gray-600 lg:mx-0">
-              Ask questions, draft ideas, and get help without an internet connection. Saviour runs AI locally on your device after setup.
-            </p>
-            <div className="mt-7 space-y-5 text-left">
-              <div className="border-l-2 border-purple-600 pl-4">
-                <h3 className="font-bold">On your phone</h3>
-                <p className="mt-1 text-sm leading-relaxed text-gray-600">Chat with Saviour directly on a compatible phone. The AI runs on the phone itself, so local chats work without Wi-Fi or mobile data.</p>
-              </div>
-              <div className="border-l-2 border-[#FF174D] pl-4">
-                <h3 className="font-bold">From your USB drive</h3>
-                <p className="mt-1 text-sm leading-relaxed text-gray-600">Carry the AI app and model on a flash drive. Plug it into a compatible computer to run your offline assistant. The USB stores the kit; the computer runs the AI.</p>
-              </div>
-            </div>
-            <AnalyticsLink href="https://sidemann-app-store.vercel.app/" target="_blank" rel="noopener noreferrer" className="mt-8 inline-flex items-center justify-center gap-4 bg-black px-7 py-3.5 text-sm font-bold text-white transition-colors hover:bg-purple-800" buttonName="Saviour_AI_Read_More">
-              Explore Saviour AI <ArrowRight className="h-4 w-4" />
-            </AnalyticsLink>
+      {/* ExamSidemann */}
+      <section aria-labelledby="examsidemann-heading" className="w-full overflow-hidden bg-[#f5f5f7] px-6 pt-16 pb-12 text-center text-[#1d1d1f] lg:text-left sm:pt-20 sm:pb-16">
+        <div className="mx-auto grid max-w-7xl items-center gap-10 lg:grid-cols-[0.9fr_1.1fr] lg:gap-14">
+          <div className="min-w-0">
+        <h2 id="examsidemann-heading">
+          <img src="/logos/examsidemann-full.png" alt="ExamSidemann" width={710} height={149} className="mx-auto lg:mx-0 h-12 w-auto sm:h-16" loading="lazy" />
+        </h2>
+        <p className="mx-auto lg:mx-0 mt-5 max-w-4xl text-balance text-xl leading-snug sm:text-2xl lg:text-[28px]">Free ZIMSEC and HEXCO past papers, notes, and AI study help.</p>
+        <div className="mt-7 flex flex-wrap justify-center gap-4 lg:justify-start">
+          <AnalyticsLink href="https://examsidemann.com" target="_blank" rel="noopener noreferrer" className="rounded-full bg-[#011845] px-6 py-2.5 text-[15px] text-white transition-colors hover:bg-[#fc2500]" buttonName="ExamSidemann_Start_Learning">
+            Start learning
+          </AnalyticsLink>
+          <Link to="/products" className="rounded-full border border-[#011845] px-6 py-2.5 text-[15px] text-[#011845] transition-colors hover:bg-[#011845] hover:text-white">
+            See our products
+          </Link>
+        </div>
           </div>
-          <div className="relative grid grid-cols-[0.85fr_1.15fr] items-center gap-3 sm:gap-6">
-            <div aria-hidden="true" className="pointer-events-none absolute inset-[10%] rounded-full bg-purple-100/70 blur-3xl" />
-            <figure className="relative min-w-0 self-start">
-              <img src="/saviour/phone-chat.png" alt="Saviour AI chat interface on a phone, showing an offline indicator and a daily planning conversation" className="h-[290px] w-full object-contain sm:h-[430px] lg:h-[460px]" loading="lazy" />
-              <figcaption className="mt-4 text-center text-sm font-semibold text-[#1a1528]">AI on your phone<span className="mt-1 block text-xs font-normal text-gray-500">Chat locally. No connection needed.</span></figcaption>
-            </figure>
-            <figure className="relative min-w-0 self-end">
-              <img src="/saviour/usb-kit.png" alt="Black and red Saviour USB flash drive beside a laptop running the offline AI chat interface" className="h-[250px] w-full object-contain sm:h-[350px] lg:h-[380px]" loading="lazy" />
-              <figcaption className="mt-4 text-center text-sm font-semibold text-[#1a1528]">AI you can carry<span className="mt-1 block text-xs font-normal text-gray-500">Your USB kit. Your computer.</span></figcaption>
-            </figure>
+          <div className="min-w-0">
+        <img src="/examsidemann/devices.png" alt="ExamSidemann study app on a phone and a laptop" className="mx-auto h-[300px] w-full max-w-4xl object-contain sm:h-[400px] lg:h-[460px]" loading="lazy" />
+          </div>
+        </div>
+      </section>
+
+      {/* Saviour Offline AI */}
+      <section aria-labelledby="offline-ai-heading" className="w-full overflow-hidden bg-white px-6 pt-16 pb-12 text-center text-[#1d1d1f] lg:text-left sm:pt-20 sm:pb-16">
+        <div className="mx-auto grid max-w-7xl items-center gap-10 lg:grid-cols-[0.9fr_1.1fr] lg:gap-14">
+          <div className="min-w-0">
+        <h2 id="offline-ai-heading" className="text-4xl font-semibold tracking-tight sm:text-5xl">Saviour AI</h2>
+        <p className="mx-auto lg:mx-0 mt-5 max-w-4xl text-balance text-xl leading-snug sm:text-2xl lg:text-[28px]">Your AI. On your device. Even offline.</p>
+        <p className="mx-auto lg:mx-0 mt-3 max-w-xl text-base leading-relaxed text-gray-600">Ask questions, write ideas, and plan your day. Saviour runs locally on your phone, with no internet needed after setup.</p>
+        <div className="mt-7 flex flex-wrap justify-center gap-4 lg:justify-start">
+          <AnalyticsLink href="https://sidemann-app-store.vercel.app/" target="_blank" rel="noopener noreferrer" className="rounded-full bg-black px-6 py-2.5 text-[15px] text-white transition-colors hover:bg-neutral-800" buttonName="Saviour_AI_Read_More">
+            Explore Saviour AI
+          </AnalyticsLink>
+          <Link to="/products" className="rounded-full border border-black px-6 py-2.5 text-[15px] text-black transition-colors hover:bg-black hover:text-white">
+            See our products
+          </Link>
+        </div>
+          </div>
+          <div className="min-w-0">
+        <img src="/saviour/phone-home.png" alt="Saviour offline AI on a silver smartphone, showing its home screen and suggested prompts" width={1024} height={1536} className="mx-auto h-auto w-full max-w-[360px] sm:max-w-[400px]" loading="lazy" />
           </div>
         </div>
       </section>
@@ -732,6 +702,50 @@ export function Home() {
           </div>
         </div>
       </motion.section>
+
+      {/* ── Latest Releases Section ── */}
+      <section className="w-full relative pt-0 pb-8 overflow-hidden flex flex-col items-center bg-white">
+        {/* White strip rail of product logos */}
+        <motion.div
+          initial={{ opacity: 0, y: 30 }}
+          whileInView={{ opacity: 1, y: 0 }}
+          viewport={{ once: true }}
+          className="w-full bg-white px-4 sm:px-6 py-4 relative z-10"
+        >
+          <h2 className="text-xl md:text-2xl font-extrabold text-[#1a1528] mb-4 text-center tracking-tight">WE CREATED</h2>
+          <div className="overflow-hidden">
+            <div className="flex w-max animate-logo-rail">
+              {[0, 1].map((copy) => (
+                <div key={copy} className="flex shrink-0" aria-hidden={copy === 1}>
+                  {[
+                    { src: '/logos/rail/examsidemann.png', width: 305, alt: 'ExamSidemann — the handheld teacher', name: 'Examsidemann' },
+                    { src: '/logos/rail/saviour.png', width: 79, alt: 'Saviour Logo', name: 'Saviour' },
+                    { src: '/logos/rail/e-razor.png', width: 121, alt: 'E-Razor Logo', name: 'E-Razor' },
+                    { src: '/logos/rail/code-droid.png', width: 65, alt: 'Code Droid Logo', name: 'Code Droid' },
+                    { src: '/logos/rail/defined-domains.png', width: 64, alt: 'Defined Domains Inclusive School Logo', name: 'Defined Domains' },
+                    { src: '/logos/rail/coha.png', width: 70, alt: 'Circle of Hope Academy Logo', name: 'COHA' },
+                    { src: '/logos/rail/vocal-sign.png', width: 68, alt: 'Vocal Sign red hands logo', name: 'Vocal Sign' },
+                    { src: '/logos/rail/knockout.png', width: 132, alt: 'Knockout Logo', name: 'Knockout Invoicing App' },
+                    { src: '/logos/rail/matina.png', width: 90, alt: 'Matina Logo', name: 'Matina Invoicing App' },
+                    { src: '/logos/rail/siesta.png', width: 65, alt: 'Siesta Logo', name: 'Siesta' },
+                    { src: '/logos/rail/service-loop.png', width: 65, alt: 'Service Loop Logo', name: 'Service Loop' },
+                    { src: '/logos/rail/maguna.png', width: 65, alt: 'maguna Logo', name: 'maguna' },
+                    { src: '/logos/rail/ritz.png', width: 65, alt: 'Ritz temporary web file sharing app logo', name: 'Ritz' },
+                    { src: '/logos/rail/lado.png', width: 65, alt: 'Lado learn coding app logo', name: 'Lado' },
+                    { src: '/logos/rail/robo-spark.png', width: 65, alt: 'Robo-Spark robotics guided learning app logo', name: 'Robo-Spark' },
+                    { src: '/logos/rail/vmax.png', width: 65, alt: 'VMax autonomous personal AI agent logo', name: 'VMax' },
+                  ].map((logo) => (
+                    <div key={logo.name} className="flex shrink-0 flex-col items-center min-w-44 px-6">
+                      <img src={logo.src} alt={logo.alt} width={Math.round(logo.width * 0.75)} height={48} style={{ width: Math.round(logo.width * 0.75), height: 48 }} className="block shrink-0 object-contain" />
+                    </div>
+                  ))}
+                </div>
+              ))}
+            </div>
+          </div>
+        </motion.div>
+      </section>
+
     </div>
   );
 }
